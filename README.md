@@ -1,2 +1,2 @@
 # es6-cheat-sheet
-Fiche récapitulative ES6
+Fiche récapitulative ES6 - Utilisable en cours
