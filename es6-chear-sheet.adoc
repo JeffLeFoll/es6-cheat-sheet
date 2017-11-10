@@ -20,7 +20,7 @@ x TypeError: invalid assignment to const pi
 x SyntaxError: redeclaration of let foo
 ----
 
-a| Fonction fléchée
+a| Fonction fléchée (https://repl.it/OGcL/1)
 [source, javascript]
 ----
 > let addition = (x, y) => x + y; 
@@ -38,7 +38,7 @@ Equivaut à :
 }
 ----
 
-a| Gestion des paramètres
+a| Gestion des paramètres (https://repl.it/OGcC/0)
 [source, javascript]
 ----
 > let additionAvecMinimum1 = (x, y=1) => x + y; 
@@ -54,7 +54,7 @@ a| Gestion des paramètres
 < 13
 ----
 
-a| Manipulation des tableaux
+a| Manipulation des tableaux (https://repl.it/OGbF/1)
 [source, javascript]
 ----
 > ['foo', 'bar', 'flop'].filter(item => item.startsWith('f')); 
@@ -70,10 +70,10 @@ a| Manipulation des tableaux
 < ['flop']
 ----
 
-a| Classe
+a| Classe (https://repl.it/OGa0/0)
 [source, javascript]
 ----
-class Vehicule {
+> class Vehicule {
     constructor(couleur, puissance) {
         this._couleur = couleur;
         this._puissance = puissance;
@@ -99,10 +99,10 @@ class Vehicule {
 < '7cv'
 ----
 
-a| Classe - Extension
+a| Classe - Extension (https://repl.it/OGaq/0)
 [source, javascript]
 ----
-class Moto extends Vehicule {
+> class Moto extends Vehicule {
     constructor(couleur, puissance, type) {
         super(couleur, puissance);
         this._type = type;
@@ -125,12 +125,127 @@ class Moto extends Vehicule {
 < "N'oubliez pas les équipements de sécurités"
 ----
 
-a|Dans le doute : 
+a| Scoped Function (https://repl.it/OGdE/1)
+[source, javascript]
+----
+> (function() {
+  let texte = 'Je suis une fonction auto-appelante !';
+  console.log(texte);
+})();
+< Je suis une fonction auto-appelante !
 
+> {
+  let texte = 'Moi pareil mais avec une syntaxe plus simple ! :)';
+  console.log(texte);
+}
+< Moi pareil mais avec une syntaxe plus simple ! :)
+----
+
+a| Template Literals (https://repl.it/OGdz/2)
+[source, javascript]
+----
+> let personne = {prenom:'James', nom:'Bond'};
+> let exclam = 'AH AH !';
+
+> console.log(`My name is ${persone.nom}, 
+            ${personne.prenom} 
+      ${personne.nom}
+-- ${exclam} --`);
+< My name is Bond, 
+            James 
+      Bond
+-- Ah Ah ! --
+----
+
+
+a| Destructuration (https://repl.it/OGfg/1)
+[source, javascript]
+----
+> let tableauSource = [1, 2, 3, 4];
+> let dest1, dest2, reste;
+
+> [dest1, dest2, ...reste] = tableauSource;
+> console.log(dest1); // 1
+> console.log(dest2); // 2
+> console.log(reste); // [3, 4]
+
+> let personne = {nom: 'Bond', prenom: 'James'};
+> let {nom, prenom} = personne;
+> console.log(nom); // Bond
+> console.log(prenom); // James
+
+> let url = 'https://developer.mozilla.org/en-US/Web/JavaScript';
+> let parsedURL = /^(\w+)\:\/\/([^\/]+)\/(.*)$/.exec(url);
+> console.log(parsedURL);  // ['https://developer.mozilla.org/en-US/Web/JavaScript', 'https', 'developer.mozilla.org','en-US/Web/JavaScript']
+
+> let [source, protocol, fullhost, fullpath] = parsedURL;
+> console.log(protocol); // https
+----
+
+a| Promesses (https://repl.it/OGhp/1)
+[source, javascript]
+----
+> let promesse = new Promise((resolve, reject) => {
+  setTimeout(() => resolve('Success!'), 250);
+});
+
+> promesse.then(message => console.log(message));
+< Success!
+
+> promesse
+  .then(message => message + ' bingo')
+  .then(message => console.log(message))
+  .catch(reason => console.log('Error : ' + reason));
+< Success! bingo
+----
+
+a| HttpRequest (https://repl.it/OGjv/3)
+[source, javascript]
+----
+> fetch('https://swapi.co/api/starships/10/')
+  .then(reponse => {
+    if (reponse.ok) {
+      return reponse.json();
+    }
+    throw new Error('Network response was not ok.');
+  })
+  .then(data => console.log('fetch: ' + data.name))
+  .catch(error => console.log('Problem : ' + error));
+< fetch: Millennium Falcon
+
+> let options = {
+  method: 'GET',
+  headers: new Headers(),
+  mode: 'cors',
+  cache: 'default',
+};
+> fetch('https://swapi.co/api/starships/10/', options);
+
+> let xhr = new XMLHttpRequest();
+> xhr.open('get', 'https://swapi.co/api/starships/10/', true);
+> xhr.responseType = 'json';
+> xhr.onload = function() {
+  let status = xhr.status;
+  if (status == 200) {
+    console.log('xhr: ' + xhr.response.name);
+  } else {
+    console.log('Network response was not ok.');
+  }
+};
+> xhr.send();
+< xhr: Millennium Falcon
+----
+
+a|Dans le doute : 
+----v
     https://developer.mozilla.org
     https://caniuse.com/
-
-
+----
+a| ES-cheat-sheet
+----
+Jean-François Le Foll 
+(@JeffLeFoll)
+----
 
 |===
 
