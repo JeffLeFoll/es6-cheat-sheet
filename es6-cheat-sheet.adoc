@@ -1,7 +1,8 @@
+:nbColonnes: 1
 [.cheat-sheet]
 [grid=none]
 [frame=none]
-[cols="2*.^"]
+[cols="{nbColonnes}*.^"]
 |===
 a| Assignation de variable
 [source, javascript]
@@ -66,7 +67,8 @@ a| Manipulation des tableaux (https://repl.it/OGbF/1)
 > ['toto', 'pop', 'start'].map(item => item.split('').reverse().join(''));
 > [ "otot", "pop", "trats" ]
 
-> ['foo', 'polf', 'flop'].map(item => item.split('').reverse().join('')).filter(item => item.startsWith('f'));
+> ['foo', 'polf', 'flop'].map(item => item.split('').reverse().join(''))
+.filter(item => item.startsWith('f'));
 < ['flop']
 ----
 
@@ -176,7 +178,9 @@ a| Destructuration (https://repl.it/OGfg/1)
 
 > let url = 'https://developer.mozilla.org/en-US/Web/JavaScript';
 > let parsedURL = /^(\w+)\:\/\/([^\/]+)\/(.*)$/.exec(url);
-> console.log(parsedURL);  // ['https://developer.mozilla.org/en-US/Web/JavaScript', 'https', 'developer.mozilla.org','en-US/Web/JavaScript']
+> console.log(parsedURL);
+< ['https://developer.mozilla.org/en-US/Web/JavaScript', 'https', 
+< 'developer.mozilla.org','en-US/Web/JavaScript']
 
 > let [source, protocol, fullhost, fullpath] = parsedURL;
 > console.log(protocol); // https
