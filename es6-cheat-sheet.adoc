@@ -136,6 +136,8 @@ a| Scoped Function (https://repl.it/OGdE/1)
 })();
 < Je suis une fonction auto-appelante !
 
+Devient : 
+
 > {
   let texte = 'Moi pareil mais avec une syntaxe plus simple ! :)';
   console.log(texte);
@@ -198,7 +200,7 @@ a| Promesses (https://repl.it/OGhp/1)
 
 > promesse
   .then(message => message + ' bingo')
-  .then(message => console.log(message))
+  .then(messageModifie => console.log(messageModifie))
   .catch(reason => console.log('Error : ' + reason));
 < Success! bingo
 ----
@@ -240,14 +242,29 @@ a| HttpRequest (https://repl.it/OGjv/3)
 < xhr: Millennium Falcon
 ----
 
+a| Async / Await (https://repl.it/@JeffLeFoll/AsyncAwait)
+[source, javascript]
+----
+ > async function loadData(url) {
+    let response = await fetch(url);
+    let data = await response.json();
+    return data;
+  }
+
+ > let data = await loadData('https://swapi.co/api/starships/10/');
+ > console.log(data.name);
+ < Millennium Falcon
+----
+
 a|Dans le doute : 
-----v
+----
     https://developer.mozilla.org
     https://caniuse.com/
 ----
-a| ES-cheat-sheet
+
+a| es6-cheat-sheet
 ----
-Jean-François Le Foll 
+Jean-François Le Foll  
 (@JeffLeFoll)
 ----
 
