@@ -256,13 +256,14 @@ a| Async / Await (https://repl.it/@JeffLeFoll/AsyncAwait)
  < Millennium Falcon
 ----
 
-a| JavaScript Module (https://repl.it/@JeffLeFoll/AsyncAwait)
+a| JavaScript Module (http://jeff.lefoll.info/es6-cheat-sheet/exemples/index.html)
 [source, javascript]
 ----
+ -- A tester avec Chrome ou Firefox (activer le flag)
  -- Logger.js
  export class Logger {
-  static log(message) {
-    console.log('From Logger : ' + message);
+  static log(logMessage) {
+    console.log('From Logger : ' + logMessage);
   }
 }
 
@@ -288,6 +289,7 @@ export class Main {
 </body>
 </html>
 
+< From Logger : Bingo !!
 ----
 
 a|Dans le doute : 
