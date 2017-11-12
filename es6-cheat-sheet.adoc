@@ -21,7 +21,7 @@ x TypeError: invalid assignment to const pi
 x SyntaxError: redeclaration of let foo
 ----
 
-a| Fonction fléchée (https://repl.it/OGcL/1)
+a| Fonction fléchée (https://repl.it/@JeffLeFoll/FonctionFlechee)
 [source, javascript]
 ----
 > let addition = (x, y) => x + y; 
@@ -39,7 +39,7 @@ Equivaut à :
 }
 ----
 
-a| Gestion des paramètres (https://repl.it/OGcC/0)
+a| Gestion des paramètres (https://repl.it/@JeffLeFoll/Parametres)
 [source, javascript]
 ----
 > let additionAvecMinimum1 = (x, y=1) => x + y; 
@@ -55,7 +55,7 @@ a| Gestion des paramètres (https://repl.it/OGcC/0)
 < 13
 ----
 
-a| Manipulation des tableaux (https://repl.it/OGbF/1)
+a| Manipulation des tableaux (https://repl.it/@JeffLeFoll/Array5)
 [source, javascript]
 ----
 > ['foo', 'bar', 'flop'].filter(item => item.startsWith('f')); 
@@ -72,7 +72,7 @@ a| Manipulation des tableaux (https://repl.it/OGbF/1)
 < ['flop']
 ----
 
-a| Classe (https://repl.it/OGa0/0)
+a| Classe (https://repl.it/@JeffLeFoll/ES6class)
 [source, javascript]
 ----
 > class Vehicule {
@@ -101,7 +101,7 @@ a| Classe (https://repl.it/OGa0/0)
 < '7cv'
 ----
 
-a| Classe - Extension (https://repl.it/OGaq/0)
+a| Classe - Extension (https://repl.it/@JeffLeFoll/ES6ClassExt)
 [source, javascript]
 ----
 > class Moto extends Vehicule {
@@ -127,7 +127,7 @@ a| Classe - Extension (https://repl.it/OGaq/0)
 < "N'oubliez pas les équipements de sécurités"
 ----
 
-a| Scoped Function (https://repl.it/OGdE/1)
+a| Scoped Function (https://repl.it/@JeffLeFoll/ScopedFunction)
 [source, javascript]
 ----
 > (function() {
@@ -145,7 +145,7 @@ Devient :
 < Moi pareil mais avec une syntaxe plus simple ! :)
 ----
 
-a| Template Literals (https://repl.it/OGdz/2)
+a| Template Literals (https://repl.it/@JeffLeFoll/TemplateLiterals)
 [source, javascript]
 ----
 > let personne = {prenom:'James', nom:'Bond'};
@@ -162,7 +162,7 @@ a| Template Literals (https://repl.it/OGdz/2)
 ----
 
 
-a| Destructuration (https://repl.it/OGfg/1)
+a| Destructuration (https://repl.it/@JeffLeFoll/Destructuration)
 [source, javascript]
 ----
 > let tableauSource = [1, 2, 3, 4];
@@ -188,7 +188,7 @@ a| Destructuration (https://repl.it/OGfg/1)
 > console.log(protocol); // https
 ----
 
-a| Promesses (https://repl.it/OGhp/1)
+a| Promesses (https://repl.it/@JeffLeFoll/Promesse)
 [source, javascript]
 ----
 > let promesse = new Promise((resolve, reject) => {
@@ -205,7 +205,7 @@ a| Promesses (https://repl.it/OGhp/1)
 < Success! bingo
 ----
 
-a| HttpRequest (https://repl.it/OGjv/3)
+a| HttpRequest (https://repl.it/@JeffLeFoll/HttpRequest)
 [source, javascript]
 ----
 > fetch('https://swapi.co/api/starships/10/')
