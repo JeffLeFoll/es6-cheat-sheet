@@ -1,5 +1,7 @@
+import Logger from './Logger.js';
+
 export class Toto {
   constructor() {
-    console.log('bingo !!');
+    Logger.log('bingo !!');
   }
 }
