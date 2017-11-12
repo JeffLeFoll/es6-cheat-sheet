@@ -1,4 +1,4 @@
-export default class {
+export class Toto {
   constructor() {
     console.log('bingo !!');
   }
