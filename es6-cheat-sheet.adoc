@@ -256,6 +256,40 @@ a| Async / Await (https://repl.it/@JeffLeFoll/AsyncAwait)
  < Millennium Falcon
 ----
 
+a| JavaScript Module (https://repl.it/@JeffLeFoll/AsyncAwait)
+[source, javascript]
+----
+ -- Logger.js
+ export class Logger {
+  static log(message) {
+    console.log('From Logger : ' + message);
+  }
+}
+
+-- Main.js
+import { Logger } from './Logger.js';
+
+export class Main {
+  constructor(message) {
+    Logger.log(message);
+  }
+}
+
+-- index.html
+<html>
+<body>
+
+    <script type="module">
+        import { Main } from './Main.js';
+
+        let main = new main('Bingo !!');    
+    </script>
+
+</body>
+</html>
+
+----
+
 a|Dans le doute : 
 ----
     https://developer.mozilla.org
