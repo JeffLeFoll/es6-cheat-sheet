@@ -294,6 +294,56 @@ export class Main {
 < From Logger : Bingo !!
 ----
 
+a| Prototype (https://repl.it/@JeffLeFoll/Prototype)
+[source, javascript]
+----
+> function Moto(couleur) {this.couleur = couleur;} 
+
+> let motoRouge = new Moto('rouge'); 
+> console.log(motoRouge.type); // undefined
+
+> Moto.prototype.type = 'sportive';
+
+> let motoBleu = new Moto('bleu');
+> motoBleu.type = 'roadster';
+
+> console.log(motoRouge.type); // "sportive"
+> console.log(motoBleu.type); // "roadster"
+
+> motoBleu.carburan = 'essence';
+> console.log(motoRouge.carburan); // "undefined"
+> console.log(motoBleu.carburan); // "essence"
+----
+
+a| JSON to ES Class (https://repl.it/@JeffLeFoll/JSON2Class)
+[source, javascript]
+----
+> let jsonData = { nom: 'Bond', prenom: 'James' };
+
+> jsonData.presentation = () => jsonData.nom + ', ' + jsonData.prenom;
+> console.log(jsonData.presentation());
+< Bond, James
+
+> let autreJsonData = { nom: 'Trevelyan', prenom: 'Alec' };
+> console.log(autreJsonData.presentation()); 
+< TypeError: autreJsonData.presentation is not a function
+
+> class Personne {
+  constructor({ nom, prenom }) {
+    this.nom = nom;
+    this.prenom = prenom;
+  }
+
+  presentation() {
+    return this.nom + ', ' + this.prenom;
+  }
+}
+
+> let agent006 = new Personne(autreJsonData);
+> console.log(agent006.presentation());
+< Trevelyan, Alec
+----
+
 a|Dans le doute : 
 ----
     https://developer.mozilla.org
