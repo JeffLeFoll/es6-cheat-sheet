@@ -256,7 +256,7 @@ a| Async / Await (https://repl.it/@JeffLeFoll/AsyncAwait)
  < Millennium Falcon
 ----
 
-a| JavaScript Module (http://jeff.lefoll.info/es6-cheat-sheet/exemples/index.html)
+a| JavaScript Module (http://jeff.lefoll.info/es6-cheat-sheet/exemples/imports/index.html)
 [source, javascript]
 ----
  -- A tester avec Chrome ou Firefox (activer le flag :
@@ -344,10 +344,18 @@ a| JSON to ES Class (https://repl.it/@JeffLeFoll/JSON2Class)
 < Trevelyan, Alec
 ----
 
+a| Test unitaire (https://repl.it/@JeffLeFoll/JSON2Class)
+[source, javascript]
+----
+mocha / chai
+----
+
 a|Dans le doute : 
 ----
     https://developer.mozilla.org
     https://caniuse.com/
+    https://github.com/airbnb/javascript
+
 ----
 
 a| es6-cheat-sheet
