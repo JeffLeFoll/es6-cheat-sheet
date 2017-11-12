@@ -344,10 +344,50 @@ a| JSON to ES Class (https://repl.it/@JeffLeFoll/JSON2Class)
 < Trevelyan, Alec
 ----
 
-a| Test unitaire (https://repl.it/@JeffLeFoll/JSON2Class)
+a| Test unitaire (http://jeff.lefoll.info/es6-cheat-sheet/exemples/tests/index.html)
 [source, javascript]
 ----
-mocha / chai
+-- Agent.js
+class Agent {
+  constructor(nom, prenom, code) {
+    this.nom = nom;
+    this.prenom = prenom;
+    this._code = code;
+  }
+
+  presentation() {
+    return this.nom + ', ' + this.prenom;
+  }
+
+  get code() {
+    return this._code;
+  }
+}
+
+-- AgentSpec.js
+chai.should(); // ou let expect = chai.expect;
+
+describe("Le comportement d'un Agent est", () => {
+  let monAgent;
+
+  beforeEach(() => {
+    monAgent = new Agent('Bond', 'James', '007');
+  });
+
+  it('doit se presenter', () => {
+    monAgent.presentation().should.equal('Bond, James');
+  });
+});
+
+-- index.html
+<script src ='chai.js'></script>
+<script src ="mocha.js"></script>
+<script>mocha.setup('bdd')</script>
+
+<script src ="Agent.js"></script>
+<script src ="AgentSpec.js"></script>
+
+<script>mocha.run();</script>
 ----
 
 a|Dans le doute : 

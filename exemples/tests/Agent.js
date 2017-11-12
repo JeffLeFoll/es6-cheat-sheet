@@ -1,4 +1,4 @@
-export class Agent {
+class Agent {
   constructor(nom, prenom, code) {
     this.nom = nom;
     this.prenom = prenom;

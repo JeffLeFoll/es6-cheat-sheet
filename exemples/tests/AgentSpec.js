@@ -1,5 +1,3 @@
-import { Agent } from './Agent.js';
-
 chai.should(); // ou let expect = chai.expect;
 
 describe("Le comportement d'un Agent est", () => {
@@ -11,5 +9,9 @@ describe("Le comportement d'un Agent est", () => {
 
   it('doit se presenter', () => {
     monAgent.presentation().should.equal('Bond, James');
+  });
+
+  it("doit avoir un code d'agent", () => {
+    monAgent.code.should.equal('007');
   });
 });
