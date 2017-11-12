@@ -259,7 +259,9 @@ a| Async / Await (https://repl.it/@JeffLeFoll/AsyncAwait)
 a| JavaScript Module (http://jeff.lefoll.info/es6-cheat-sheet/exemples/index.html)
 [source, javascript]
 ----
- -- A tester avec Chrome ou Firefox (activer le flag)
+ -- A tester avec Chrome ou Firefox (activer le flag :
+ -- dom.moduleScripts.enabled dans la page about:config )
+
  -- Logger.js
  export class Logger {
   static log(logMessage) {
