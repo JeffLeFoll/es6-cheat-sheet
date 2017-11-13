@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 1.5.6.1">
+<meta name="author" content="Jean-François Le Foll (@JeffLeFoll)">
+<title>ES6/7-CHEAT-SHEET</title>
+<style>
+.listingblock .pygments .hll { background-color: #ffffcc }
+.listingblock .pygments, .listingblock .pygments code { background: #f8f8f8; }
+.listingblock .pygments .tok-c { color: #408080; font-style: italic } /* Comment */
+.listingblock .pygments .tok-err { border: 1px solid #FF0000 } /* Error */
+.listingblock .pygments .tok-k { color: #008000; font-weight: bold } /* Keyword */
+.listingblock .pygments .tok-o { color: #666666 } /* Operator */
+.listingblock .pygments .tok-ch { color: #408080; font-style: italic } /* Comment.Hashbang */
+.listingblock .pygments .tok-cm { color: #408080; font-style: italic } /* Comment.Multiline */
+.listingblock .pygments .tok-cp { color: #BC7A00 } /* Comment.Preproc */
+.listingblock .pygments .tok-cpf { color: #408080; font-style: italic } /* Comment.PreprocFile */
+.listingblock .pygments .tok-c1 { color: #408080; font-style: italic } /* Comment.Single */
+.listingblock .pygments .tok-cs { color: #408080; font-style: italic } /* Comment.Special */
+.listingblock .pygments .tok-gd { color: #A00000 } /* Generic.Deleted */
+.listingblock .pygments .tok-ge { font-style: italic } /* Generic.Emph */
+.listingblock .pygments .tok-gr { color: #FF0000 } /* Generic.Error */
+.listingblock .pygments .tok-gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.listingblock .pygments .tok-gi { color: #00A000 } /* Generic.Inserted */
+.listingblock .pygments .tok-go { color: #888888 } /* Generic.Output */
+.listingblock .pygments .tok-gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+.listingblock .pygments .tok-gs { font-weight: bold } /* Generic.Strong */
+.listingblock .pygments .tok-gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.listingblock .pygments .tok-gt { color: #0044DD } /* Generic.Traceback */
+.listingblock .pygments .tok-kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+.listingblock .pygments .tok-kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+.listingblock .pygments .tok-kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+.listingblock .pygments .tok-kp { color: #008000 } /* Keyword.Pseudo */
+.listingblock .pygments .tok-kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+.listingblock .pygments .tok-kt { color: #B00040 } /* Keyword.Type */
+.listingblock .pygments .tok-m { color: #666666 } /* Literal.Number */
+.listingblock .pygments .tok-s { color: #BA2121 } /* Literal.String */
+.listingblock .pygments .tok-na { color: #7D9029 } /* Name.Attribute */
+.listingblock .pygments .tok-nb { color: #008000 } /* Name.Builtin */
+.listingblock .pygments .tok-nc { color: #0000FF; font-weight: bold } /* Name.Class */
+.listingblock .pygments .tok-no { color: #880000 } /* Name.Constant */
+.listingblock .pygments .tok-nd { color: #AA22FF } /* Name.Decorator */
+.listingblock .pygments .tok-ni { color: #999999; font-weight: bold } /* Name.Entity */
+.listingblock .pygments .tok-ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+.listingblock .pygments .tok-nf { color: #0000FF } /* Name.Function */
+.listingblock .pygments .tok-nl { color: #A0A000 } /* Name.Label */
+.listingblock .pygments .tok-nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+.listingblock .pygments .tok-nt { color: #008000; font-weight: bold } /* Name.Tag */
+.listingblock .pygments .tok-nv { color: #19177C } /* Name.Variable */
+.listingblock .pygments .tok-ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+.listingblock .pygments .tok-w { color: #bbbbbb } /* Text.Whitespace */
+.listingblock .pygments .tok-mb { color: #666666 } /* Literal.Number.Bin */
+.listingblock .pygments .tok-mf { color: #666666 } /* Literal.Number.Float */
+.listingblock .pygments .tok-mh { color: #666666 } /* Literal.Number.Hex */
+.listingblock .pygments .tok-mi { color: #666666 } /* Literal.Number.Integer */
+.listingblock .pygments .tok-mo { color: #666666 } /* Literal.Number.Oct */
+.listingblock .pygments .tok-sa { color: #BA2121 } /* Literal.String.Affix */
+.listingblock .pygments .tok-sb { color: #BA2121 } /* Literal.String.Backtick */
+.listingblock .pygments .tok-sc { color: #BA2121 } /* Literal.String.Char */
+.listingblock .pygments .tok-dl { color: #BA2121 } /* Literal.String.Delimiter */
+.listingblock .pygments .tok-sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+.listingblock .pygments .tok-s2 { color: #BA2121 } /* Literal.String.Double */
+.listingblock .pygments .tok-se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+.listingblock .pygments .tok-sh { color: #BA2121 } /* Literal.String.Heredoc */
+.listingblock .pygments .tok-si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+.listingblock .pygments .tok-sx { color: #008000 } /* Literal.String.Other */
+.listingblock .pygments .tok-sr { color: #BB6688 } /* Literal.String.Regex */
+.listingblock .pygments .tok-s1 { color: #BA2121 } /* Literal.String.Single */
+.listingblock .pygments .tok-ss { color: #19177C } /* Literal.String.Symbol */
+.listingblock .pygments .tok-bp { color: #008000 } /* Name.Builtin.Pseudo */
+.listingblock .pygments .tok-fm { color: #0000FF } /* Name.Function.Magic */
+.listingblock .pygments .tok-vc { color: #19177C } /* Name.Variable.Class */
+.listingblock .pygments .tok-vg { color: #19177C } /* Name.Variable.Global */
+.listingblock .pygments .tok-vi { color: #19177C } /* Name.Variable.Instance */
+.listingblock .pygments .tok-vm { color: #19177C } /* Name.Variable.Magic */
+.listingblock .pygments .tok-il { color: #666666 } /* Literal.Number.Integer.Long */
+</style>
+</head>
+<body class="article">
+<div id="header">
+<h1>ES6/7-CHEAT-SHEET</h1>
+<div class="details">
+<span id="author" class="author">Jean-François Le Foll (@JeffLeFoll)</span><br>
+</div>
+</div>
+<div id="content">
+<table class="tableblock frame-none grid-none spread cheat-sheet">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-middle"><div><div class="paragraph">
+<p><strong>Assignation de variable</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="javascript"><span></span><span class="tok-o">&gt;</span> <span class="tok-kr">const</span> <span class="tok-nx">pi</span> <span class="tok-o">=</span> <span class="tok-mf">3.14</span><span class="tok-p">;</span>
+<span class="tok-o">&gt;</span> <span class="tok-nx">pi</span> <span class="tok-o">=</span> <span class="tok-mf">3.15</span>
+<span class="tok-nx">x</span> <span class="tok-nx">TypeError</span><span class="tok-o">:</span> <span class="tok-nx">invalid</span> <span class="tok-nx">assignment</span> <span class="tok-nx">to</span> <span class="tok-kr">const</span> <span class="tok-nx">pi</span>
+
+<span class="tok-o">&gt;</span> <span class="tok-kd">let</span> <span class="tok-nx">foo</span> <span class="tok-o">=</span> <span class="tok-s1">&#39;bar&#39;</span><span class="tok-p">;</span>
+<span class="tok-o">&gt;</span> <span class="tok-nx">console</span><span class="tok-p">.</span><span class="tok-nx">log</span><span class="tok-p">(</span><span class="tok-nx">foo</span><span class="tok-p">)</span>
+<span class="tok-o">&lt;</span> <span class="tok-s2">&quot;bar&quot;</span>
+<span class="tok-o">&gt;</span> <span class="tok-nx">foo</span> <span class="tok-o">=</span> <span class="tok-s1">&#39;foo&#39;</span>
+<span class="tok-o">&gt;</span> <span class="tok-nx">console</span><span class="tok-p">.</span><span class="tok-nx">log</span><span class="tok-p">(</span><span class="tok-nx">foo</span><span class="tok-p">)</span>
+<span class="tok-o">&lt;</span> <span class="tok-s2">&quot;foo&quot;</span>
+<span class="tok-o">&gt;</span> <span class="tok-kd">let</span> <span class="tok-nx">foo</span> <span class="tok-o">=</span> <span class="tok-s1">&#39;toto&#39;</span>
+<span class="tok-nx">x</span> <span class="tok-nx">SyntaxError</span><span class="tok-o">:</span> <span class="tok-nx">redeclaration</span> <span class="tok-k">of</span> <span class="tok-kd">let</span> <span class="tok-nx">foo</span></code></pre>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><div><div class="paragraph">
+<p><strong>Fonction fléchée</strong> (<a href="https://repl.it/@JeffLeFoll/FonctionFlechee" class="bare">https://repl.it/@JeffLeFoll/FonctionFlechee</a>)</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="javascript"><span></span><span class="tok-o">&gt;</span> <span class="tok-kd">let</span> <span class="tok-nx">addition</span> <span class="tok-o">=</span> <span class="tok-p">(</span><span class="tok-nx">x</span><span class="tok-p">,</span> <span class="tok-nx">y</span><span class="tok-p">)</span> <span class="tok-p">=&gt;</span> <span class="tok-nx">x</span> <span class="tok-o">+</span> <span class="tok-nx">y</span><span class="tok-p">;</span>
+<span class="tok-o">&gt;</span> <span class="tok-nx">addition</span><span class="tok-p">(</span><span class="tok-mi">4</span><span class="tok-p">,</span><span class="tok-mi">5</span><span class="tok-p">);</span>
+<span class="tok-o">&lt;</span> <span class="tok-mi">9</span>
+
+<span class="tok-nx">Equivaut</span> <span class="tok-nx">à</span> <span class="tok-o">:</span>
+
+<span class="tok-o">&gt;</span> <span class="tok-kd">let</span> <span class="tok-nx">addition</span> <span class="tok-o">=</span> <span class="tok-p">(</span><span class="tok-nx">x</span><span class="tok-p">,</span> <span class="tok-nx">y</span><span class="tok-p">)</span> <span class="tok-p">=&gt;</span> <span class="tok-p">{</span>
+    <span class="tok-k">return</span> <span class="tok-nx">x</span> <span class="tok-o">+</span> <span class="tok-nx">y</span><span class="tok-p">;</span>
+<span class="tok-p">};</span>
+
+<span class="tok-o">&gt;</span> <span class="tok-kd">let</span> <span class="tok-nx">addition</span> <span class="tok-o">=</span> <span class="tok-kd">function</span><span class="tok-p">(</span><span class="tok-nx">x</span><span class="tok-p">,</span><span class="tok-nx">y</span><span class="tok-p">)</span> <span class="tok-p">{</span>
+    <span class="tok-k">return</span> <span class="tok-nx">x</span> <span class="tok-o">+</span> <span class="tok-nx">y</span><span class="tok-p">;</span>
+<span class="tok-p">}</span></code></pre>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><div><div class="paragraph">
+<p><strong>Gestion des paramètres</strong> (<a href="https://repl.it/@JeffLeFoll/Parametres" class="bare">https://repl.it/@JeffLeFoll/Parametres</a>)</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="javascript"><span></span><span class="tok-o">&gt;</span> <span class="tok-kd">let</span> <span class="tok-nx">additionAvecMinimum1</span> <span class="tok-o">=</span> <span class="tok-p">(</span><span class="tok-nx">x</span><span class="tok-p">,</span> <span class="tok-nx">y</span><span class="tok-o">=</span><span class="tok-mi">1</span><span class="tok-p">)</span> <span class="tok-p">=&gt;</span> <span class="tok-nx">x</span> <span class="tok-o">+</span> <span class="tok-nx">y</span><span class="tok-p">;</span>
+<span class="tok-o">&gt;</span> <span class="tok-nx">additionAvecMinimum1</span><span class="tok-p">(</span><span class="tok-mi">4</span><span class="tok-p">);</span>
+<span class="tok-o">&lt;</span> <span class="tok-mi">5</span>
+
+<span class="tok-o">&gt;</span> <span class="tok-kd">let</span> <span class="tok-nx">addition</span> <span class="tok-o">=</span> <span class="tok-p">(...</span><span class="tok-nx">valeurs</span><span class="tok-p">)</span> <span class="tok-p">=&gt;</span> <span class="tok-nx">valeurs</span><span class="tok-p">.</span><span class="tok-nx">reduce</span><span class="tok-p">((</span><span class="tok-nx">total</span><span class="tok-p">,</span> <span class="tok-nx">valeur</span><span class="tok-p">)</span> <span class="tok-p">=&gt;</span> <span class="tok-nx">total</span> <span class="tok-o">+</span> <span class="tok-nx">valeur</span> <span class="tok-p">);</span>
+<span class="tok-o">&gt;</span> <span class="tok-nx">addition</span><span class="tok-p">(</span><span class="tok-mi">5</span><span class="tok-p">,</span><span class="tok-mi">6</span><span class="tok-p">,</span><span class="tok-mi">7</span><span class="tok-p">);</span>
+<span class="tok-o">&lt;</span> <span class="tok-mi">18</span>
+
+<span class="tok-o">&gt;</span> <span class="tok-kd">let</span> <span class="tok-nx">soustraction</span> <span class="tok-o">=</span> <span class="tok-p">(...[</span><span class="tok-nx">a</span><span class="tok-p">,</span> <span class="tok-nx">b</span><span class="tok-p">,</span> <span class="tok-nx">c</span><span class="tok-p">])</span> <span class="tok-p">=&gt;</span> <span class="tok-nx">a</span> <span class="tok-o">-</span> <span class="tok-nx">b</span> <span class="tok-o">-</span> <span class="tok-nx">c</span><span class="tok-p">;</span>
+<span class="tok-o">&gt;</span> <span class="tok-nx">soustraction</span><span class="tok-p">(</span><span class="tok-mi">20</span><span class="tok-p">,</span> <span class="tok-mi">5</span><span class="tok-p">,</span> <span class="tok-mi">2</span><span class="tok-p">,</span> <span class="tok-mi">45</span><span class="tok-p">);</span>
+<span class="tok-o">&lt;</span> <span class="tok-mi">13</span></code></pre>
+</div>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><div><div class="paragraph">
+<p><strong>Manipulation des tableaux</strong> (<a href="https://repl.it/@JeffLeFoll/Array5" class="bare">https://repl.it/@JeffLeFoll/Array5</a>)</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="javascript"><span></span><span class="tok-o">&gt;</span> <span class="tok-p">[</span><span class="tok-s1">&#39;foo&#39;</span><span class="tok-p">,</span> <span class="tok-s1">&#39;bar&#39;</span><span class="tok-p">,</span> <span class="tok-s1">&#39;flop&#39;</span><span class="tok-p">].</span><span class="tok-nx">filter</span><span class="tok-p">(</span><span class="tok-nx">item</span> <span class="tok-p">=&gt;</span> <span class="tok-nx">item</span><span class="tok-p">.</span><span class="tok-nx">startsWith</span><span class="tok-p">(</span><span class="tok-s1">&#39;f&#39;</span><span class="tok-p">));</span>
+<span class="tok-o">&lt;</span> <span class="tok-p">[</span> <span class="tok-s2">&quot;foo&quot;</span><span class="tok-p">,</span> <span class="tok-s2">&quot;flop&quot;</span> <span class="tok-p">]</span>
+
+<span class="tok-o">&gt;</span> <span class="tok-p">[</span><span class="tok-mi">1</span><span class="tok-p">,</span> <span class="tok-mi">2</span><span class="tok-p">,</span> <span class="tok-mi">3</span><span class="tok-p">].</span><span class="tok-nx">reduce</span><span class="tok-p">((</span><span class="tok-nx">total</span><span class="tok-p">,</span> <span class="tok-nx">valeur</span><span class="tok-p">)</span> <span class="tok-p">=&gt;</span> <span class="tok-nx">total</span> <span class="tok-o">+</span> <span class="tok-nx">valeur</span><span class="tok-p">);</span>
+<span class="tok-o">&lt;</span> <span class="tok-mi">6</span>
+
+<span class="tok-o">&gt;</span> <span class="tok-p">[</span><span class="tok-s1">&#39;toto&#39;</span><span class="tok-p">,</span> <span class="tok-s1">&#39;pop&#39;</span><span class="tok-p">,</span> <span class="tok-s1">&#39;start&#39;</span><span class="tok-p">].</span><span class="tok-nx">map</span><span class="tok-p">(</span><span class="tok-nx">item</span> <span class="tok-p">=&gt;</span> <span class="tok-nx">item</span><span class="tok-p">.</span><span class="tok-nx">split</span><span class="tok-p">(</span><span class="tok-s1">&#39;&#39;</span><span class="tok-p">).</span><span class="tok-nx">reverse</span><span class="tok-p">().</span><span class="tok-nx">join</span><span class="tok-p">(</span><span class="tok-s1">&#39;&#39;</span><span class="tok-p">));</span>
+<span class="tok-o">&gt;</span> <span class="tok-p">[</span> <span class="tok-s2">&quot;otot&quot;</span><span class="tok-p">,</span> <span class="tok-s2">&quot;pop&quot;</span><span class="tok-p">,</span> <span class="tok-s2">&quot;trats&quot;</span> <span class="tok-p">]</span>
+
+<span class="tok-o">&gt;</span> <span class="tok-p">[</span><span class="tok-s1">&#39;foo&#39;</span><span class="tok-p">,</span> <span class="tok-s1">&#39;polf&#39;</span><span class="tok-p">,</span> <span class="tok-s1">&#39;flop&#39;</span><span class="tok-p">].</span><span class="tok-nx">map</span><span class="tok-p">(</span><span class="tok-nx">item</span> <span class="tok-p">=&gt;</span> <span class="tok-nx">item</span><span class="tok-p">.</span><span class="tok-nx">split</span><span class="tok-p">(</span><span class="tok-s1">&#39;&#39;</span><span class="tok-p">).</span><span class="tok-nx">reverse</span><span class="tok-p">().</span><span class="tok-nx">join</span><span class="tok-p">(</span><span class="tok-s1">&#39;&#39;</span><span class="tok-p">))</span>
+<span class="tok-p">.</span><span class="tok-nx">filter</span><span class="tok-p">(</span><span class="tok-nx">item</span> <span class="tok-p">=&gt;</span> <span class="tok-nx">item</span><span class="tok-p">.</span><span class="tok-nx">startsWith</span><span class="tok-p">(</span><span class="tok-s1">&#39;f&#39;</span><span class="tok-p">));</span>
+<span class="tok-o">&lt;</span> <span class="tok-p">[</span><span class="tok-s1">&#39;flop&#39;</span><span class="tok-p">]</span></code></pre>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><div><div class="paragraph">
+<p><strong>Classe</strong> (<a href="https://repl.it/@JeffLeFoll/ES6class" class="bare">https://repl.it/@JeffLeFoll/ES6class</a>)</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="javascript"><span></span><span class="tok-o">&gt;</span> <span class="tok-kr">class</span> <span class="tok-nx">Vehicule</span> <span class="tok-p">{</span>
+    <span class="tok-nx">constructor</span><span class="tok-p">(</span><span class="tok-nx">couleur</span><span class="tok-p">,</span> <span class="tok-nx">puissance</span><span class="tok-p">)</span> <span class="tok-p">{</span>
+        <span class="tok-k">this</span><span class="tok-p">.</span><span class="tok-nx">_couleur</span> <span class="tok-o">=</span> <span class="tok-nx">couleur</span><span class="tok-p">;</span>
+        <span class="tok-k">this</span><span class="tok-p">.</span><span class="tok-nx">_puissance</span> <span class="tok-o">=</span> <span class="tok-nx">puissance</span><span class="tok-p">;</span>
+    <span class="tok-p">}</span>
+
+    <span class="tok-nx">get</span> <span class="tok-nx">puissance</span><span class="tok-p">()</span> <span class="tok-p">{</span><span class="tok-k">return</span> <span class="tok-k">this</span><span class="tok-p">.</span><span class="tok-nx">_puissance</span><span class="tok-p">}</span>
+
+    <span class="tok-nx">get</span> <span class="tok-nx">couleur</span><span class="tok-p">()</span> <span class="tok-p">{</span><span class="tok-k">return</span> <span class="tok-k">this</span><span class="tok-p">.</span><span class="tok-nx">_couleur</span><span class="tok-p">}</span>
+
+    <span class="tok-nx">set</span> <span class="tok-nx">couleur</span><span class="tok-p">(</span><span class="tok-nx">nouvelleCouleur</span><span class="tok-p">)</span> <span class="tok-p">{</span><span class="tok-k">this</span><span class="tok-p">.</span><span class="tok-nx">_couleur</span> <span class="tok-o">=</span> <span class="tok-nx">nouvelleCouleur</span><span class="tok-p">}</span>
+<span class="tok-p">}</span>
+
+<span class="tok-o">&gt;</span> <span class="tok-kd">let</span> <span class="tok-nx">unVehicule</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">Vehicule</span><span class="tok-p">(</span><span class="tok-s1">&#39;rouge&#39;</span><span class="tok-p">,</span> <span class="tok-s1">&#39;7cv&#39;</span><span class="tok-p">);</span>
+<span class="tok-o">&gt;</span> <span class="tok-nx">console</span><span class="tok-p">.</span><span class="tok-nx">log</span><span class="tok-p">(</span><span class="tok-nx">unVehicule</span><span class="tok-p">.</span><span class="tok-nx">couleur</span><span class="tok-p">);</span>
+<span class="tok-o">&lt;</span> <span class="tok-s1">&#39;rouge&#39;</span>
+<span class="tok-o">&gt;</span> <span class="tok-nx">unVehicule</span><span class="tok-p">.</span><span class="tok-nx">couleur</span> <span class="tok-o">=</span> <span class="tok-s1">&#39;vert&#39;</span><span class="tok-p">;</span>
+<span class="tok-o">&gt;</span> <span class="tok-nx">console</span><span class="tok-p">.</span><span class="tok-nx">log</span><span class="tok-p">(</span><span class="tok-nx">unVehicule</span><span class="tok-p">.</span><span class="tok-nx">couleur</span><span class="tok-p">);</span>
+<span class="tok-o">&lt;</span> <span class="tok-s1">&#39;vert&#39;</span>
+<span class="tok-o">&gt;</span> <span class="tok-nx">console</span><span class="tok-p">.</span><span class="tok-nx">log</span><span class="tok-p">(</span><span class="tok-nx">unVehicule</span><span class="tok-p">.</span><span class="tok-nx">puissance</span><span class="tok-p">);</span>
+<span class="tok-o">&lt;</span> <span class="tok-s1">&#39;7cv&#39;</span>
+<span class="tok-o">&gt;</span> <span class="tok-nx">unVehicule</span><span class="tok-p">.</span><span class="tok-nx">puissance</span> <span class="tok-o">=</span> <span class="tok-s1">&#39;4cv&#39;</span><span class="tok-p">;</span>
+<span class="tok-o">&gt;</span> <span class="tok-nx">console</span><span class="tok-p">.</span><span class="tok-nx">log</span><span class="tok-p">(</span><span class="tok-nx">unVehicule</span><span class="tok-p">.</span><span class="tok-nx">puissance</span><span class="tok-p">);</span>
+<span class="tok-o">&lt;</span> <span class="tok-s1">&#39;7cv&#39;</span></code></pre>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><div><div class="paragraph">
+<p><strong>Classe - Extension</strong> (<a href="https://repl.it/@JeffLeFoll/ES6ClassExt" class="bare">https://repl.it/@JeffLeFoll/ES6ClassExt</a>)</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="javascript"><span></span><span class="tok-o">&gt;</span> <span class="tok-kr">class</span> <span class="tok-nx">Moto</span> <span class="tok-kr">extends</span> <span class="tok-nx">Vehicule</span> <span class="tok-p">{</span>
+    <span class="tok-nx">constructor</span><span class="tok-p">(</span><span class="tok-nx">couleur</span><span class="tok-p">,</span> <span class="tok-nx">puissance</span><span class="tok-p">,</span> <span class="tok-nx">type</span><span class="tok-p">)</span> <span class="tok-p">{</span>
+        <span class="tok-kr">super</span><span class="tok-p">(</span><span class="tok-nx">couleur</span><span class="tok-p">,</span> <span class="tok-nx">puissance</span><span class="tok-p">);</span>
+        <span class="tok-k">this</span><span class="tok-p">.</span><span class="tok-nx">_type</span> <span class="tok-o">=</span> <span class="tok-nx">type</span><span class="tok-p">;</span>
+    <span class="tok-p">}</span>
+
+    <span class="tok-nx">debridage</span><span class="tok-p">(</span><span class="tok-nx">nouvellePuissance</span><span class="tok-p">)</span> <span class="tok-p">{</span><span class="tok-k">this</span><span class="tok-p">.</span><span class="tok-nx">_puissance</span> <span class="tok-o">=</span> <span class="tok-nx">nouvellePuissance</span><span class="tok-p">}</span>
+
+    <span class="tok-kr">static</span> <span class="tok-nx">warning</span><span class="tok-p">()</span> <span class="tok-p">{</span><span class="tok-k">return</span> <span class="tok-s1">&#39;N\&#39;oubliez pas les équipements de sécurités&#39;</span><span class="tok-p">}</span>
+<span class="tok-p">}</span>
+
+<span class="tok-o">&gt;</span> <span class="tok-kd">let</span> <span class="tok-nx">gsr600</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">Moto</span><span class="tok-p">(</span><span class="tok-s1">&#39;gris&#39;</span><span class="tok-p">,</span> <span class="tok-s1">&#39;98cv&#39;</span><span class="tok-p">,</span> <span class="tok-s1">&#39;roadster&#39;</span><span class="tok-p">);</span>
+<span class="tok-o">&gt;</span> <span class="tok-nx">console</span><span class="tok-p">.</span><span class="tok-nx">log</span><span class="tok-p">(</span><span class="tok-nx">gsr600</span><span class="tok-p">.</span><span class="tok-nx">couleur</span><span class="tok-p">);</span>
+<span class="tok-o">&lt;</span> <span class="tok-s1">&#39;gris&#39;</span>
+<span class="tok-o">&gt;</span> <span class="tok-nx">console</span><span class="tok-p">.</span><span class="tok-nx">log</span><span class="tok-p">(</span><span class="tok-nx">gsr600</span><span class="tok-p">.</span><span class="tok-nx">puissance</span><span class="tok-p">);</span>
+<span class="tok-o">&lt;</span> <span class="tok-s1">&#39;98cv&#39;</span>
+<span class="tok-o">&gt;</span> <span class="tok-nx">gsr600</span><span class="tok-p">.</span><span class="tok-nx">debridage</span><span class="tok-p">(</span><span class="tok-s1">&#39;110cv&#39;</span><span class="tok-p">);</span>
+<span class="tok-o">&gt;</span> <span class="tok-nx">console</span><span class="tok-p">.</span><span class="tok-nx">log</span><span class="tok-p">(</span><span class="tok-nx">gsr600</span><span class="tok-p">.</span><span class="tok-nx">puissance</span><span class="tok-p">);</span>
+<span class="tok-o">&lt;</span> <span class="tok-s1">&#39;110cv&#39;</span>
+<span class="tok-o">&gt;</span> <span class="tok-nx">Moto</span><span class="tok-p">.</span><span class="tok-nx">warning</span><span class="tok-p">();</span>
+<span class="tok-o">&lt;</span> <span class="tok-s2">&quot;N&#39;oubliez pas les équipements de sécurités&quot;</span></code></pre>
+</div>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><div><div class="paragraph">
+<p><strong>Scoped Function</strong> (<a href="https://repl.it/@JeffLeFoll/ScopedFunction" class="bare">https://repl.it/@JeffLeFoll/ScopedFunction</a>)</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="javascript"><span></span><span class="tok-o">&gt;</span> <span class="tok-p">(</span><span class="tok-kd">function</span><span class="tok-p">()</span> <span class="tok-p">{</span>
+  <span class="tok-kd">let</span> <span class="tok-nx">texte</span> <span class="tok-o">=</span> <span class="tok-s1">&#39;Je suis une fonction auto-appelante !&#39;</span><span class="tok-p">;</span>
+  <span class="tok-nx">console</span><span class="tok-p">.</span><span class="tok-nx">log</span><span class="tok-p">(</span><span class="tok-nx">texte</span><span class="tok-p">);</span>
+<span class="tok-p">})();</span>
+<span class="tok-o">&lt;</span> <span class="tok-nx">Je</span> <span class="tok-nx">suis</span> <span class="tok-nx">une</span> <span class="tok-nx">fonction</span> <span class="tok-nx">auto</span><span class="tok-o">-</span><span class="tok-nx">appelante</span> <span class="tok-o">!</span>
+
+<span class="tok-nx">Devient</span> <span class="tok-o">:</span>
+
+<span class="tok-o">&gt;</span> <span class="tok-p">{</span>
+  <span class="tok-kd">let</span> <span class="tok-nx">texte</span> <span class="tok-o">=</span> <span class="tok-s1">&#39;Moi pareil mais avec une syntaxe plus simple ! :)&#39;</span><span class="tok-p">;</span>
+  <span class="tok-nx">console</span><span class="tok-p">.</span><span class="tok-nx">log</span><span class="tok-p">(</span><span class="tok-nx">texte</span><span class="tok-p">);</span>
+<span class="tok-p">}</span>
+<span class="tok-o">&lt;</span> <span class="tok-nx">Moi</span> <span class="tok-nx">pareil</span> <span class="tok-nx">mais</span> <span class="tok-nx">avec</span> <span class="tok-nx">une</span> <span class="tok-nx">syntaxe</span> <span class="tok-nx">plus</span> <span class="tok-nx">simple</span> <span class="tok-o">!</span> <span class="tok-o">:</span><span class="tok-p">)</span></code></pre>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><div><div class="paragraph">
+<p><strong>Template Literals</strong> (<a href="https://repl.it/@JeffLeFoll/TemplateLiterals" class="bare">https://repl.it/@JeffLeFoll/TemplateLiterals</a>)</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="javascript"><span></span><span class="tok-o">&gt;</span> <span class="tok-kd">let</span> <span class="tok-nx">personne</span> <span class="tok-o">=</span> <span class="tok-p">{</span><span class="tok-nx">prenom</span><span class="tok-o">:</span><span class="tok-s1">&#39;James&#39;</span><span class="tok-p">,</span> <span class="tok-nx">nom</span><span class="tok-o">:</span><span class="tok-s1">&#39;Bond&#39;</span><span class="tok-p">};</span>
+<span class="tok-o">&gt;</span> <span class="tok-kd">let</span> <span class="tok-nx">exclam</span> <span class="tok-o">=</span> <span class="tok-s1">&#39;AH AH !&#39;</span><span class="tok-p">;</span>
+
+<span class="tok-o">&gt;</span> <span class="tok-nx">console</span><span class="tok-p">.</span><span class="tok-nx">log</span><span class="tok-p">(</span><span class="tok-sb">`My name is </span><span class="tok-si">${</span><span class="tok-nx">persone</span><span class="tok-p">.</span><span class="tok-nx">nom</span><span class="tok-si">}</span><span class="tok-sb">,</span>
+<span class="tok-sb">            </span><span class="tok-si">${</span><span class="tok-nx">personne</span><span class="tok-p">.</span><span class="tok-nx">prenom</span><span class="tok-si">}</span><span class="tok-sb"></span>
+<span class="tok-sb">      </span><span class="tok-si">${</span><span class="tok-nx">personne</span><span class="tok-p">.</span><span class="tok-nx">nom</span><span class="tok-si">}</span><span class="tok-sb"></span>
+<span class="tok-sb">-- </span><span class="tok-si">${</span><span class="tok-nx">exclam</span><span class="tok-si">}</span><span class="tok-sb"> --`</span><span class="tok-p">);</span>
+<span class="tok-o">&lt;</span> <span class="tok-nx">My</span> <span class="tok-nx">name</span> <span class="tok-nx">is</span> <span class="tok-nx">Bond</span><span class="tok-p">,</span>
+            <span class="tok-nx">James</span>
+      <span class="tok-nx">Bond</span>
+<span class="tok-o">--</span> <span class="tok-nx">Ah</span> <span class="tok-nx">Ah</span> <span class="tok-o">!</span> <span class="tok-o">--</span></code></pre>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><div><div class="paragraph">
+<p><strong>Destructuration</strong> (<a href="https://repl.it/@JeffLeFoll/Destructuration" class="bare">https://repl.it/@JeffLeFoll/Destructuration</a>)</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="javascript"><span></span><span class="tok-o">&gt;</span> <span class="tok-kd">let</span> <span class="tok-nx">tableauSource</span> <span class="tok-o">=</span> <span class="tok-p">[</span><span class="tok-mi">1</span><span class="tok-p">,</span> <span class="tok-mi">2</span><span class="tok-p">,</span> <span class="tok-mi">3</span><span class="tok-p">,</span> <span class="tok-mi">4</span><span class="tok-p">];</span>
+<span class="tok-o">&gt;</span> <span class="tok-kd">let</span> <span class="tok-nx">dest1</span><span class="tok-p">,</span> <span class="tok-nx">dest2</span><span class="tok-p">,</span> <span class="tok-nx">reste</span><span class="tok-p">;</span>
+
+<span class="tok-o">&gt;</span> <span class="tok-p">[</span><span class="tok-nx">dest1</span><span class="tok-p">,</span> <span class="tok-nx">dest2</span><span class="tok-p">,</span> <span class="tok-p">...</span><span class="tok-nx">reste</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-nx">tableauSource</span><span class="tok-p">;</span>
+<span class="tok-o">&gt;</span> <span class="tok-nx">console</span><span class="tok-p">.</span><span class="tok-nx">log</span><span class="tok-p">(</span><span class="tok-nx">dest1</span><span class="tok-p">);</span> <span class="tok-c1">// 1</span>
+<span class="tok-o">&gt;</span> <span class="tok-nx">console</span><span class="tok-p">.</span><span class="tok-nx">log</span><span class="tok-p">(</span><span class="tok-nx">dest2</span><span class="tok-p">);</span> <span class="tok-c1">// 2</span>
+<span class="tok-o">&gt;</span> <span class="tok-nx">console</span><span class="tok-p">.</span><span class="tok-nx">log</span><span class="tok-p">(</span><span class="tok-nx">reste</span><span class="tok-p">);</span> <span class="tok-c1">// [3, 4]</span>
+
+<span class="tok-o">&gt;</span> <span class="tok-kd">let</span> <span class="tok-nx">personne</span> <span class="tok-o">=</span> <span class="tok-p">{</span><span class="tok-nx">nom</span><span class="tok-o">:</span> <span class="tok-s1">&#39;Bond&#39;</span><span class="tok-p">,</span> <span class="tok-nx">prenom</span><span class="tok-o">:</span> <span class="tok-s1">&#39;James&#39;</span><span class="tok-p">};</span>
+<span class="tok-o">&gt;</span> <span class="tok-kd">let</span> <span class="tok-p">{</span><span class="tok-nx">nom</span><span class="tok-p">,</span> <span class="tok-nx">prenom</span><span class="tok-p">}</span> <span class="tok-o">=</span> <span class="tok-nx">personne</span><span class="tok-p">;</span>
+<span class="tok-o">&gt;</span> <span class="tok-nx">console</span><span class="tok-p">.</span><span class="tok-nx">log</span><span class="tok-p">(</span><span class="tok-nx">nom</span><span class="tok-p">);</span> <span class="tok-c1">// Bond</span>
+<span class="tok-o">&gt;</span> <span class="tok-nx">console</span><span class="tok-p">.</span><span class="tok-nx">log</span><span class="tok-p">(</span><span class="tok-nx">prenom</span><span class="tok-p">);</span> <span class="tok-c1">// James</span>
+
+<span class="tok-o">&gt;</span> <span class="tok-kd">let</span> <span class="tok-nx">url</span> <span class="tok-o">=</span> <span class="tok-s1">&#39;https://developer.mozilla.org/en-US/Web/JavaScript&#39;</span><span class="tok-p">;</span>
+<span class="tok-o">&gt;</span> <span class="tok-kd">let</span> <span class="tok-nx">parsedURL</span> <span class="tok-o">=</span> <span class="tok-sr">/^(\w+)\:\/\/([^\/]+)\/(.*)$/</span><span class="tok-p">.</span><span class="tok-nx">exec</span><span class="tok-p">(</span><span class="tok-nx">url</span><span class="tok-p">);</span>
+<span class="tok-o">&gt;</span> <span class="tok-nx">console</span><span class="tok-p">.</span><span class="tok-nx">log</span><span class="tok-p">(</span><span class="tok-nx">parsedURL</span><span class="tok-p">);</span>
+<span class="tok-o">&lt;</span> <span class="tok-p">[</span><span class="tok-s1">&#39;https://developer.mozilla.org/en-US/Web/JavaScript&#39;</span><span class="tok-p">,</span> <span class="tok-s1">&#39;https&#39;</span><span class="tok-p">,</span>
+<span class="tok-o">&lt;</span> <span class="tok-s1">&#39;developer.mozilla.org&#39;</span><span class="tok-p">,</span><span class="tok-s1">&#39;en-US/Web/JavaScript&#39;</span><span class="tok-p">]</span>
+
+<span class="tok-o">&gt;</span> <span class="tok-kd">let</span> <span class="tok-p">[</span><span class="tok-nx">source</span><span class="tok-p">,</span> <span class="tok-nx">protocol</span><span class="tok-p">,</span> <span class="tok-nx">fullhost</span><span class="tok-p">,</span> <span class="tok-nx">fullpath</span><span class="tok-p">]</span> <span class="tok-o">=</span> <span class="tok-nx">parsedURL</span><span class="tok-p">;</span>
+<span class="tok-o">&gt;</span> <span class="tok-nx">console</span><span class="tok-p">.</span><span class="tok-nx">log</span><span class="tok-p">(</span><span class="tok-nx">protocol</span><span class="tok-p">);</span> <span class="tok-c1">// https</span></code></pre>
+</div>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><div><div class="paragraph">
+<p><strong>Promesses</strong> (<a href="https://repl.it/@JeffLeFoll/Promesse" class="bare">https://repl.it/@JeffLeFoll/Promesse</a>)</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="javascript"><span></span><span class="tok-o">&gt;</span> <span class="tok-kd">let</span> <span class="tok-nx">promesse</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nb">Promise</span><span class="tok-p">((</span><span class="tok-nx">resolve</span><span class="tok-p">,</span> <span class="tok-nx">reject</span><span class="tok-p">)</span> <span class="tok-p">=&gt;</span> <span class="tok-p">{</span>
+  <span class="tok-nx">setTimeout</span><span class="tok-p">(()</span> <span class="tok-p">=&gt;</span> <span class="tok-nx">resolve</span><span class="tok-p">(</span><span class="tok-s1">&#39;Success!&#39;</span><span class="tok-p">),</span> <span class="tok-mi">250</span><span class="tok-p">);</span>
+<span class="tok-p">});</span>
+
+<span class="tok-o">&gt;</span> <span class="tok-nx">promesse</span><span class="tok-p">.</span><span class="tok-nx">then</span><span class="tok-p">(</span><span class="tok-nx">message</span> <span class="tok-p">=&gt;</span> <span class="tok-nx">console</span><span class="tok-p">.</span><span class="tok-nx">log</span><span class="tok-p">(</span><span class="tok-nx">message</span><span class="tok-p">));</span>
+<span class="tok-o">&lt;</span> <span class="tok-nx">Success</span><span class="tok-o">!</span>
+
+<span class="tok-o">&gt;</span> <span class="tok-nx">promesse</span>
+  <span class="tok-p">.</span><span class="tok-nx">then</span><span class="tok-p">(</span><span class="tok-nx">message</span> <span class="tok-p">=&gt;</span> <span class="tok-nx">message</span> <span class="tok-o">+</span> <span class="tok-s1">&#39; bingo&#39;</span><span class="tok-p">)</span>
+  <span class="tok-p">.</span><span class="tok-nx">then</span><span class="tok-p">(</span><span class="tok-nx">messageModifie</span> <span class="tok-p">=&gt;</span> <span class="tok-nx">console</span><span class="tok-p">.</span><span class="tok-nx">log</span><span class="tok-p">(</span><span class="tok-nx">messageModifie</span><span class="tok-p">))</span>
+  <span class="tok-p">.</span><span class="tok-k">catch</span><span class="tok-p">(</span><span class="tok-nx">reason</span> <span class="tok-p">=&gt;</span> <span class="tok-nx">console</span><span class="tok-p">.</span><span class="tok-nx">log</span><span class="tok-p">(</span><span class="tok-s1">&#39;Error : &#39;</span> <span class="tok-o">+</span> <span class="tok-nx">reason</span><span class="tok-p">));</span>
+<span class="tok-o">&lt;</span> <span class="tok-nx">Success</span><span class="tok-o">!</span> <span class="tok-nx">bingo</span></code></pre>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><div><div class="paragraph">
+<p><strong>Fetch API</strong> (<a href="https://repl.it/@JeffLeFoll/HttpRequest" class="bare">https://repl.it/@JeffLeFoll/HttpRequest</a>)</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="javascript"><span></span><span class="tok-o">&gt;</span> <span class="tok-nx">fetch</span><span class="tok-p">(</span><span class="tok-s1">&#39;https://swapi.co/api/starships/10/&#39;</span><span class="tok-p">)</span>
+  <span class="tok-p">.</span><span class="tok-nx">then</span><span class="tok-p">(</span><span class="tok-nx">reponse</span> <span class="tok-p">=&gt;</span> <span class="tok-p">{</span>
+    <span class="tok-k">if</span> <span class="tok-p">(</span><span class="tok-nx">reponse</span><span class="tok-p">.</span><span class="tok-nx">ok</span><span class="tok-p">)</span> <span class="tok-p">{</span>
+      <span class="tok-k">return</span> <span class="tok-nx">reponse</span><span class="tok-p">.</span><span class="tok-nx">json</span><span class="tok-p">();</span>
+    <span class="tok-p">}</span>
+    <span class="tok-k">throw</span> <span class="tok-k">new</span> <span class="tok-nb">Error</span><span class="tok-p">(</span><span class="tok-s1">&#39;Network response was not ok.&#39;</span><span class="tok-p">);</span>
+  <span class="tok-p">})</span>
+  <span class="tok-p">.</span><span class="tok-nx">then</span><span class="tok-p">(</span><span class="tok-nx">data</span> <span class="tok-p">=&gt;</span> <span class="tok-nx">console</span><span class="tok-p">.</span><span class="tok-nx">log</span><span class="tok-p">(</span><span class="tok-s1">&#39;fetch: &#39;</span> <span class="tok-o">+</span> <span class="tok-nx">data</span><span class="tok-p">.</span><span class="tok-nx">name</span><span class="tok-p">))</span>
+  <span class="tok-p">.</span><span class="tok-k">catch</span><span class="tok-p">(</span><span class="tok-nx">error</span> <span class="tok-p">=&gt;</span> <span class="tok-nx">console</span><span class="tok-p">.</span><span class="tok-nx">log</span><span class="tok-p">(</span><span class="tok-s1">&#39;Problem : &#39;</span> <span class="tok-o">+</span> <span class="tok-nx">error</span><span class="tok-p">));</span>
+<span class="tok-o">&lt;</span> <span class="tok-nx">fetch</span><span class="tok-o">:</span> <span class="tok-nx">Millennium</span> <span class="tok-nx">Falcon</span>
+
+<span class="tok-o">&gt;</span> <span class="tok-kd">let</span> <span class="tok-nx">options</span> <span class="tok-o">=</span> <span class="tok-p">{</span>
+  <span class="tok-nx">method</span><span class="tok-o">:</span> <span class="tok-s1">&#39;GET&#39;</span><span class="tok-p">,</span>
+  <span class="tok-nx">headers</span><span class="tok-o">:</span> <span class="tok-k">new</span> <span class="tok-nx">Headers</span><span class="tok-p">(),</span>
+  <span class="tok-nx">mode</span><span class="tok-o">:</span> <span class="tok-s1">&#39;cors&#39;</span><span class="tok-p">,</span>
+  <span class="tok-nx">cache</span><span class="tok-o">:</span> <span class="tok-s1">&#39;default&#39;</span><span class="tok-p">,</span>
+<span class="tok-p">};</span>
+<span class="tok-o">&gt;</span> <span class="tok-nx">fetch</span><span class="tok-p">(</span><span class="tok-s1">&#39;https://swapi.co/api/starships/10/&#39;</span><span class="tok-p">,</span> <span class="tok-nx">options</span><span class="tok-p">);</span></code></pre>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><div><div class="paragraph">
+<p><strong>HttpRequest</strong> (<a href="https://repl.it/@JeffLeFoll/HttpRequest" class="bare">https://repl.it/@JeffLeFoll/HttpRequest</a>)</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="javascript"><span></span><span class="tok-o">&gt;</span> <span class="tok-kd">let</span> <span class="tok-nx">xhr</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">XMLHttpRequest</span><span class="tok-p">();</span>
+<span class="tok-o">&gt;</span> <span class="tok-nx">xhr</span><span class="tok-p">.</span><span class="tok-nx">open</span><span class="tok-p">(</span><span class="tok-s1">&#39;get&#39;</span><span class="tok-p">,</span> <span class="tok-s1">&#39;https://swapi.co/api/starships/10/&#39;</span><span class="tok-p">,</span> <span class="tok-kc">true</span><span class="tok-p">);</span>
+<span class="tok-o">&gt;</span> <span class="tok-nx">xhr</span><span class="tok-p">.</span><span class="tok-nx">responseType</span> <span class="tok-o">=</span> <span class="tok-s1">&#39;json&#39;</span><span class="tok-p">;</span>
+<span class="tok-o">&gt;</span> <span class="tok-nx">xhr</span><span class="tok-p">.</span><span class="tok-nx">onload</span> <span class="tok-o">=</span> <span class="tok-kd">function</span><span class="tok-p">()</span> <span class="tok-p">{</span>
+  <span class="tok-kd">let</span> <span class="tok-nx">status</span> <span class="tok-o">=</span> <span class="tok-nx">xhr</span><span class="tok-p">.</span><span class="tok-nx">status</span><span class="tok-p">;</span>
+  <span class="tok-k">if</span> <span class="tok-p">(</span><span class="tok-nx">status</span> <span class="tok-o">==</span> <span class="tok-mi">200</span><span class="tok-p">)</span> <span class="tok-p">{</span>
+    <span class="tok-nx">console</span><span class="tok-p">.</span><span class="tok-nx">log</span><span class="tok-p">(</span><span class="tok-s1">&#39;xhr: &#39;</span> <span class="tok-o">+</span> <span class="tok-nx">xhr</span><span class="tok-p">.</span><span class="tok-nx">response</span><span class="tok-p">.</span><span class="tok-nx">name</span><span class="tok-p">);</span>
+  <span class="tok-p">}</span> <span class="tok-k">else</span> <span class="tok-p">{</span>
+    <span class="tok-nx">console</span><span class="tok-p">.</span><span class="tok-nx">log</span><span class="tok-p">(</span><span class="tok-s1">&#39;Network response was not ok.&#39;</span><span class="tok-p">);</span>
+  <span class="tok-p">}</span>
+<span class="tok-p">};</span>
+<span class="tok-o">&gt;</span> <span class="tok-nx">xhr</span><span class="tok-p">.</span><span class="tok-nx">send</span><span class="tok-p">();</span>
+<span class="tok-o">&lt;</span> <span class="tok-nx">xhr</span><span class="tok-o">:</span> <span class="tok-nx">Millennium</span> <span class="tok-nx">Falcon</span></code></pre>
+</div>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><div><div class="paragraph">
+<p><strong>Async / Await</strong> (<a href="https://repl.it/@JeffLeFoll/AsyncAwait" class="bare">https://repl.it/@JeffLeFoll/AsyncAwait</a>)</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="javascript"><span></span> <span class="tok-o">&gt;</span> <span class="tok-nx">async</span> <span class="tok-kd">function</span> <span class="tok-nx">loadData</span><span class="tok-p">(</span><span class="tok-nx">url</span><span class="tok-p">)</span> <span class="tok-p">{</span>
+    <span class="tok-kd">let</span> <span class="tok-nx">response</span> <span class="tok-o">=</span> <span class="tok-nx">await</span> <span class="tok-nx">fetch</span><span class="tok-p">(</span><span class="tok-nx">url</span><span class="tok-p">);</span>
+    <span class="tok-kd">let</span> <span class="tok-nx">data</span> <span class="tok-o">=</span> <span class="tok-nx">await</span> <span class="tok-nx">response</span><span class="tok-p">.</span><span class="tok-nx">json</span><span class="tok-p">();</span>
+    <span class="tok-k">return</span> <span class="tok-nx">data</span><span class="tok-p">;</span>
+  <span class="tok-p">}</span>
+
+ <span class="tok-o">&gt;</span> <span class="tok-kd">let</span> <span class="tok-nx">data</span> <span class="tok-o">=</span> <span class="tok-nx">await</span> <span class="tok-nx">loadData</span><span class="tok-p">(</span><span class="tok-s1">&#39;https://swapi.co/api/starships/10/&#39;</span><span class="tok-p">);</span>
+ <span class="tok-o">&gt;</span> <span class="tok-nx">console</span><span class="tok-p">.</span><span class="tok-nx">log</span><span class="tok-p">(</span><span class="tok-nx">data</span><span class="tok-p">.</span><span class="tok-nx">name</span><span class="tok-p">);</span>
+ <span class="tok-o">&lt;</span> <span class="tok-nx">Millennium</span> <span class="tok-nx">Falcon</span></code></pre>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><div><div class="paragraph">
+<p><strong>JavaScript Module</strong> (<a href="http://jeff.lefoll.info/es6-cheat-sheet/exemples/imports/index.html" class="bare">http://jeff.lefoll.info/es6-cheat-sheet/exemples/imports/index.html</a>)</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="javascript"><span></span> <span class="tok-o">--</span> <span class="tok-nx">A</span> <span class="tok-nx">tester</span> <span class="tok-nx">avec</span> <span class="tok-nx">Chrome</span> <span class="tok-nx">ou</span> <span class="tok-nx">Firefox</span> <span class="tok-p">(</span><span class="tok-nx">activer</span> <span class="tok-nx">le</span> <span class="tok-nx">flag</span> <span class="tok-o">:</span>
+ <span class="tok-o">--</span> <span class="tok-nx">dom</span><span class="tok-p">.</span><span class="tok-nx">moduleScripts</span><span class="tok-p">.</span><span class="tok-nx">enabled</span> <span class="tok-nx">dans</span> <span class="tok-nx">la</span> <span class="tok-nx">page</span> <span class="tok-nx">about</span><span class="tok-o">:</span><span class="tok-nx">config</span> <span class="tok-p">)</span>
+ <span class="tok-o">--</span> <span class="tok-nx">Logger</span><span class="tok-p">.</span><span class="tok-nx">js</span>
+ <span class="tok-kr">export</span> <span class="tok-kr">class</span> <span class="tok-nx">Logger</span> <span class="tok-p">{</span>
+  <span class="tok-kr">static</span> <span class="tok-nx">log</span><span class="tok-p">(</span><span class="tok-nx">logMessage</span><span class="tok-p">)</span> <span class="tok-p">{</span>
+    <span class="tok-nx">console</span><span class="tok-p">.</span><span class="tok-nx">log</span><span class="tok-p">(</span><span class="tok-s1">&#39;From Logger : &#39;</span> <span class="tok-o">+</span> <span class="tok-nx">logMessage</span><span class="tok-p">);</span>
+  <span class="tok-p">}</span>
+<span class="tok-p">}</span>
+<span class="tok-o">--</span> <span class="tok-nx">Main</span><span class="tok-p">.</span><span class="tok-nx">js</span>
+<span class="tok-kr">import</span> <span class="tok-p">{</span> <span class="tok-nx">Logger</span> <span class="tok-p">}</span> <span class="tok-nx">from</span> <span class="tok-s1">&#39;./Logger.js&#39;</span><span class="tok-p">;</span>
+
+<span class="tok-kr">export</span> <span class="tok-kr">class</span> <span class="tok-nx">Main</span> <span class="tok-p">{</span>
+  <span class="tok-nx">constructor</span><span class="tok-p">(</span><span class="tok-nx">message</span><span class="tok-p">)</span> <span class="tok-p">{</span>
+    <span class="tok-nx">Logger</span><span class="tok-p">.</span><span class="tok-nx">log</span><span class="tok-p">(</span><span class="tok-nx">message</span><span class="tok-p">);</span>
+  <span class="tok-p">}</span>
+<span class="tok-p">}</span>
+<span class="tok-o">--</span> <span class="tok-nx">index</span><span class="tok-p">.</span><span class="tok-nx">html</span>
+<span class="tok-o">&lt;</span><span class="tok-nx">html</span><span class="tok-o">&gt;&lt;</span><span class="tok-nx">body</span><span class="tok-o">&gt;</span>
+    <span class="tok-o">&lt;</span><span class="tok-nx">script</span> <span class="tok-nx">type</span><span class="tok-o">=</span><span class="tok-s2">&quot;module&quot;</span><span class="tok-o">&gt;</span>
+        <span class="tok-kr">import</span> <span class="tok-p">{</span> <span class="tok-nx">Main</span> <span class="tok-p">}</span> <span class="tok-nx">from</span> <span class="tok-s1">&#39;./Main.js&#39;</span><span class="tok-p">;</span>
+        <span class="tok-kd">let</span> <span class="tok-nx">main</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">main</span><span class="tok-p">(</span><span class="tok-s1">&#39;Bingo !!&#39;</span><span class="tok-p">);</span>
+    <span class="tok-o">&lt;</span><span class="tok-err">/script&gt;</span>
+<span class="tok-o">&lt;</span><span class="tok-err">/body&gt;&lt;/html&gt;</span>
+
+<span class="tok-o">&lt;</span> <span class="tok-nx">From</span> <span class="tok-nx">Logger</span> <span class="tok-o">:</span> <span class="tok-nx">Bingo</span> <span class="tok-o">!!</span></code></pre>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><div><div class="paragraph">
+<p><strong>Prototype</strong> (<a href="https://repl.it/@JeffLeFoll/Prototype" class="bare">https://repl.it/@JeffLeFoll/Prototype</a>)</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="javascript"><span></span><span class="tok-o">&gt;</span> <span class="tok-kd">function</span> <span class="tok-nx">Moto</span><span class="tok-p">(</span><span class="tok-nx">couleur</span><span class="tok-p">)</span> <span class="tok-p">{</span><span class="tok-k">this</span><span class="tok-p">.</span><span class="tok-nx">couleur</span> <span class="tok-o">=</span> <span class="tok-nx">couleur</span><span class="tok-p">;}</span>
+
+<span class="tok-o">&gt;</span> <span class="tok-kd">let</span> <span class="tok-nx">motoRouge</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">Moto</span><span class="tok-p">(</span><span class="tok-s1">&#39;rouge&#39;</span><span class="tok-p">);</span>
+<span class="tok-o">&gt;</span> <span class="tok-nx">console</span><span class="tok-p">.</span><span class="tok-nx">log</span><span class="tok-p">(</span><span class="tok-nx">motoRouge</span><span class="tok-p">.</span><span class="tok-nx">type</span><span class="tok-p">);</span> <span class="tok-c1">// undefined</span>
+
+<span class="tok-o">&gt;</span> <span class="tok-nx">Moto</span><span class="tok-p">.</span><span class="tok-nx">prototype</span><span class="tok-p">.</span><span class="tok-nx">type</span> <span class="tok-o">=</span> <span class="tok-s1">&#39;sportive&#39;</span><span class="tok-p">;</span>
+
+<span class="tok-o">&gt;</span> <span class="tok-kd">let</span> <span class="tok-nx">motoBleu</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">Moto</span><span class="tok-p">(</span><span class="tok-s1">&#39;bleu&#39;</span><span class="tok-p">);</span>
+<span class="tok-o">&gt;</span> <span class="tok-nx">motoBleu</span><span class="tok-p">.</span><span class="tok-nx">type</span> <span class="tok-o">=</span> <span class="tok-s1">&#39;roadster&#39;</span><span class="tok-p">;</span>
+
+<span class="tok-o">&gt;</span> <span class="tok-nx">console</span><span class="tok-p">.</span><span class="tok-nx">log</span><span class="tok-p">(</span><span class="tok-nx">motoRouge</span><span class="tok-p">.</span><span class="tok-nx">type</span><span class="tok-p">);</span> <span class="tok-c1">// &quot;sportive&quot;</span>
+<span class="tok-o">&gt;</span> <span class="tok-nx">console</span><span class="tok-p">.</span><span class="tok-nx">log</span><span class="tok-p">(</span><span class="tok-nx">motoBleu</span><span class="tok-p">.</span><span class="tok-nx">type</span><span class="tok-p">);</span> <span class="tok-c1">// &quot;roadster&quot;</span>
+
+<span class="tok-o">&gt;</span> <span class="tok-nx">motoBleu</span><span class="tok-p">.</span><span class="tok-nx">carburan</span> <span class="tok-o">=</span> <span class="tok-s1">&#39;essence&#39;</span><span class="tok-p">;</span>
+<span class="tok-o">&gt;</span> <span class="tok-nx">console</span><span class="tok-p">.</span><span class="tok-nx">log</span><span class="tok-p">(</span><span class="tok-nx">motoRouge</span><span class="tok-p">.</span><span class="tok-nx">carburan</span><span class="tok-p">);</span> <span class="tok-c1">// &quot;undefined&quot;</span>
+<span class="tok-o">&gt;</span> <span class="tok-nx">console</span><span class="tok-p">.</span><span class="tok-nx">log</span><span class="tok-p">(</span><span class="tok-nx">motoBleu</span><span class="tok-p">.</span><span class="tok-nx">carburan</span><span class="tok-p">);</span> <span class="tok-c1">// &quot;essence&quot;</span></code></pre>
+</div>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-middle"><div><div class="paragraph">
+<p><strong>JSON to ES Class</strong> (<a href="https://repl.it/@JeffLeFoll/JSON2Class" class="bare">https://repl.it/@JeffLeFoll/JSON2Class</a>)</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="javascript"><span></span><span class="tok-o">&gt;</span> <span class="tok-kd">let</span> <span class="tok-nx">jsonData</span> <span class="tok-o">=</span> <span class="tok-p">{</span> <span class="tok-nx">nom</span><span class="tok-o">:</span> <span class="tok-s1">&#39;Bond&#39;</span><span class="tok-p">,</span> <span class="tok-nx">prenom</span><span class="tok-o">:</span> <span class="tok-s1">&#39;James&#39;</span> <span class="tok-p">};</span>
+
+<span class="tok-o">&gt;</span> <span class="tok-nx">jsonData</span><span class="tok-p">.</span><span class="tok-nx">presentation</span> <span class="tok-o">=</span> <span class="tok-p">()</span> <span class="tok-p">=&gt;</span> <span class="tok-nx">jsonData</span><span class="tok-p">.</span><span class="tok-nx">nom</span> <span class="tok-o">+</span> <span class="tok-s1">&#39;, &#39;</span> <span class="tok-o">+</span> <span class="tok-nx">jsonData</span><span class="tok-p">.</span><span class="tok-nx">prenom</span><span class="tok-p">;</span>
+<span class="tok-o">&gt;</span> <span class="tok-nx">console</span><span class="tok-p">.</span><span class="tok-nx">log</span><span class="tok-p">(</span><span class="tok-nx">jsonData</span><span class="tok-p">.</span><span class="tok-nx">presentation</span><span class="tok-p">());</span>
+<span class="tok-o">&lt;</span> <span class="tok-nx">Bond</span><span class="tok-p">,</span> <span class="tok-nx">James</span>
+
+<span class="tok-o">&gt;</span> <span class="tok-kd">let</span> <span class="tok-nx">autreJsonData</span> <span class="tok-o">=</span> <span class="tok-p">{</span> <span class="tok-nx">nom</span><span class="tok-o">:</span> <span class="tok-s1">&#39;Trevelyan&#39;</span><span class="tok-p">,</span> <span class="tok-nx">prenom</span><span class="tok-o">:</span> <span class="tok-s1">&#39;Alec&#39;</span> <span class="tok-p">};</span>
+<span class="tok-o">&gt;</span> <span class="tok-nx">console</span><span class="tok-p">.</span><span class="tok-nx">log</span><span class="tok-p">(</span><span class="tok-nx">autreJsonData</span><span class="tok-p">.</span><span class="tok-nx">presentation</span><span class="tok-p">());</span>
+<span class="tok-o">&lt;</span> <span class="tok-nx">TypeError</span><span class="tok-o">:</span> <span class="tok-nx">autreJsonData</span><span class="tok-p">.</span><span class="tok-nx">presentation</span> <span class="tok-nx">is</span> <span class="tok-nx">not</span> <span class="tok-nx">a</span> <span class="tok-kd">function</span>
+
+<span class="tok-o">&gt;</span> <span class="tok-kr">class</span> <span class="tok-nx">Personne</span> <span class="tok-p">{</span>
+  <span class="tok-nx">constructor</span><span class="tok-p">({</span> <span class="tok-nx">nom</span><span class="tok-p">,</span> <span class="tok-nx">prenom</span> <span class="tok-p">})</span> <span class="tok-p">{</span>
+    <span class="tok-k">this</span><span class="tok-p">.</span><span class="tok-nx">nom</span> <span class="tok-o">=</span> <span class="tok-nx">nom</span><span class="tok-p">;</span>
+    <span class="tok-k">this</span><span class="tok-p">.</span><span class="tok-nx">prenom</span> <span class="tok-o">=</span> <span class="tok-nx">prenom</span><span class="tok-p">;</span>
+  <span class="tok-p">}</span>
+
+  <span class="tok-nx">presentation</span><span class="tok-p">()</span> <span class="tok-p">{</span>
+    <span class="tok-k">return</span> <span class="tok-k">this</span><span class="tok-p">.</span><span class="tok-nx">nom</span> <span class="tok-o">+</span> <span class="tok-s1">&#39;, &#39;</span> <span class="tok-o">+</span> <span class="tok-k">this</span><span class="tok-p">.</span><span class="tok-nx">prenom</span><span class="tok-p">;</span>
+  <span class="tok-p">}</span>
+<span class="tok-p">}</span>
+
+<span class="tok-o">&gt;</span> <span class="tok-kd">let</span> <span class="tok-nx">agent006</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">Personne</span><span class="tok-p">(</span><span class="tok-nx">autreJsonData</span><span class="tok-p">);</span>
+<span class="tok-o">&gt;</span> <span class="tok-nx">console</span><span class="tok-p">.</span><span class="tok-nx">log</span><span class="tok-p">(</span><span class="tok-nx">agent006</span><span class="tok-p">.</span><span class="tok-nx">presentation</span><span class="tok-p">());</span>
+<span class="tok-o">&lt;</span> <span class="tok-nx">Trevelyan</span><span class="tok-p">,</span> <span class="tok-nx">Alec</span></code></pre>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><div><div class="paragraph">
+<p><strong>Test unitaire</strong> (<a href="http://jeff.lefoll.info/es6-cheat-sheet/exemples/tests/index.html" class="bare">http://jeff.lefoll.info/es6-cheat-sheet/exemples/tests/index.html</a>)</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="javascript"><span></span><span class="tok-o">--</span> <span class="tok-nx">Agent</span><span class="tok-p">.</span><span class="tok-nx">js</span>
+<span class="tok-kr">class</span> <span class="tok-nx">Agent</span> <span class="tok-p">{</span>
+  <span class="tok-nx">constructor</span><span class="tok-p">(</span><span class="tok-nx">nom</span><span class="tok-p">,</span> <span class="tok-nx">prenom</span><span class="tok-p">,</span> <span class="tok-nx">code</span><span class="tok-p">)</span> <span class="tok-p">{</span>
+    <span class="tok-k">this</span><span class="tok-p">.</span><span class="tok-nx">nom</span> <span class="tok-o">=</span> <span class="tok-nx">nom</span><span class="tok-p">;</span>
+    <span class="tok-k">this</span><span class="tok-p">.</span><span class="tok-nx">prenom</span> <span class="tok-o">=</span> <span class="tok-nx">prenom</span><span class="tok-p">;</span>
+    <span class="tok-k">this</span><span class="tok-p">.</span><span class="tok-nx">_code</span> <span class="tok-o">=</span> <span class="tok-nx">code</span><span class="tok-p">;</span>
+  <span class="tok-p">}</span>
+
+  <span class="tok-nx">presentation</span><span class="tok-p">()</span> <span class="tok-p">{</span>
+    <span class="tok-k">return</span> <span class="tok-k">this</span><span class="tok-p">.</span><span class="tok-nx">nom</span> <span class="tok-o">+</span> <span class="tok-s1">&#39;, &#39;</span> <span class="tok-o">+</span> <span class="tok-k">this</span><span class="tok-p">.</span><span class="tok-nx">prenom</span><span class="tok-p">;</span>
+  <span class="tok-p">}</span>
+
+  <span class="tok-nx">get</span> <span class="tok-nx">code</span><span class="tok-p">()</span> <span class="tok-p">{</span>
+    <span class="tok-k">return</span> <span class="tok-k">this</span><span class="tok-p">.</span><span class="tok-nx">_code</span><span class="tok-p">;</span>
+  <span class="tok-p">}</span>
+<span class="tok-p">}</span>
+
+<span class="tok-o">--</span> <span class="tok-nx">AgentSpec</span><span class="tok-p">.</span><span class="tok-nx">js</span>
+<span class="tok-nx">chai</span><span class="tok-p">.</span><span class="tok-nx">should</span><span class="tok-p">();</span> <span class="tok-c1">// ou let expect = chai.expect;</span>
+
+<span class="tok-nx">describe</span><span class="tok-p">(</span><span class="tok-s2">&quot;Le comportement d&#39;un Agent est&quot;</span><span class="tok-p">,</span> <span class="tok-p">()</span> <span class="tok-p">=&gt;</span> <span class="tok-p">{</span>
+  <span class="tok-kd">let</span> <span class="tok-nx">monAgent</span><span class="tok-p">;</span>
+
+  <span class="tok-nx">beforeEach</span><span class="tok-p">(()</span> <span class="tok-p">=&gt;</span> <span class="tok-p">{</span>
+    <span class="tok-nx">monAgent</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">Agent</span><span class="tok-p">(</span><span class="tok-s1">&#39;Bond&#39;</span><span class="tok-p">,</span> <span class="tok-s1">&#39;James&#39;</span><span class="tok-p">,</span> <span class="tok-s1">&#39;007&#39;</span><span class="tok-p">);</span>
+  <span class="tok-p">});</span>
+
+  <span class="tok-nx">it</span><span class="tok-p">(</span><span class="tok-s1">&#39;doit se presenter&#39;</span><span class="tok-p">,</span> <span class="tok-p">()</span> <span class="tok-p">=&gt;</span> <span class="tok-p">{</span>
+    <span class="tok-nx">monAgent</span><span class="tok-p">.</span><span class="tok-nx">presentation</span><span class="tok-p">().</span><span class="tok-nx">should</span><span class="tok-p">.</span><span class="tok-nx">equal</span><span class="tok-p">(</span><span class="tok-s1">&#39;Bond, James&#39;</span><span class="tok-p">);</span>
+  <span class="tok-p">});</span>
+<span class="tok-p">});</span></code></pre>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><div><div class="paragraph">
+<p><strong>Dans le doute</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>    https://developer.mozilla.org
+    https://caniuse.com/
+    https://github.com/airbnb/javascript</pre>
+</div>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2017-11-13 14:04:00 CET
+</div>
+</div>
+</body>
+</html>

@@ -1,10 +1,16 @@
-:nbColonnes: 1
+= ES6/7-CHEAT-SHEET
+Jean-François Le Foll (@JeffLeFoll)
+:source-highlighter: pygments
+:no-header-footer:
+:nbColonnes: 3
+
 [.cheat-sheet]
 [grid=none]
 [frame=none]
 [cols="{nbColonnes}*.^"]
 |===
-a| Assignation de variable
+
+a| *Assignation de variable*
 [source, javascript]
 ----
 > const pi = 3.14;
@@ -12,16 +18,16 @@ a| Assignation de variable
 x TypeError: invalid assignment to const pi
 
 > let foo = 'bar';
-> foo
+> console.log(foo)
 < "bar"
 > foo = 'foo'
-> foo
+> console.log(foo)
 < "foo"
 > let foo = 'toto'
 x SyntaxError: redeclaration of let foo
 ----
 
-a| Fonction fléchée (https://repl.it/@JeffLeFoll/FonctionFlechee)
+a| *Fonction fléchée* (https://repl.it/@JeffLeFoll/FonctionFlechee)
 [source, javascript]
 ----
 > let addition = (x, y) => x + y; 
@@ -39,7 +45,7 @@ Equivaut à :
 }
 ----
 
-a| Gestion des paramètres (https://repl.it/@JeffLeFoll/Parametres)
+a| *Gestion des paramètres* (https://repl.it/@JeffLeFoll/Parametres)
 [source, javascript]
 ----
 > let additionAvecMinimum1 = (x, y=1) => x + y; 
@@ -55,7 +61,7 @@ a| Gestion des paramètres (https://repl.it/@JeffLeFoll/Parametres)
 < 13
 ----
 
-a| Manipulation des tableaux (https://repl.it/@JeffLeFoll/Array5)
+a| *Manipulation des tableaux* (https://repl.it/@JeffLeFoll/Array5)
 [source, javascript]
 ----
 > ['foo', 'bar', 'flop'].filter(item => item.startsWith('f')); 
@@ -72,7 +78,7 @@ a| Manipulation des tableaux (https://repl.it/@JeffLeFoll/Array5)
 < ['flop']
 ----
 
-a| Classe (https://repl.it/@JeffLeFoll/ES6class)
+a| *Classe* (https://repl.it/@JeffLeFoll/ES6class)
 [source, javascript]
 ----
 > class Vehicule {
@@ -89,19 +95,19 @@ a| Classe (https://repl.it/@JeffLeFoll/ES6class)
 }
 
 > let unVehicule = new Vehicule('rouge', '7cv');
-> unVehicule.couleur;
+> console.log(unVehicule.couleur);
 < 'rouge'
 > unVehicule.couleur = 'vert';
-> unVehicule.couleur;
+> console.log(unVehicule.couleur);
 < 'vert'
-> unVehicule.puissance;
+> console.log(unVehicule.puissance);
 < '7cv'
 > unVehicule.puissance = '4cv';
-> unVehicule.puissance;
+> console.log(unVehicule.puissance);
 < '7cv'
 ----
 
-a| Classe - Extension (https://repl.it/@JeffLeFoll/ES6ClassExt)
+a| *Classe - Extension* (https://repl.it/@JeffLeFoll/ES6ClassExt)
 [source, javascript]
 ----
 > class Moto extends Vehicule {
@@ -116,18 +122,18 @@ a| Classe - Extension (https://repl.it/@JeffLeFoll/ES6ClassExt)
 }
 
 > let gsr600 = new Moto('gris', '98cv', 'roadster');
-> gsr600.couleur;
+> console.log(gsr600.couleur);
 < 'gris'
-> gsr600.puissance;
+> console.log(gsr600.puissance);
 < '98cv'
 > gsr600.debridage('110cv');
-> gsr600.puissance;
+> console.log(gsr600.puissance);
 < '110cv'
 > Moto.warning();
 < "N'oubliez pas les équipements de sécurités"
 ----
 
-a| Scoped Function (https://repl.it/@JeffLeFoll/ScopedFunction)
+a| *Scoped Function* (https://repl.it/@JeffLeFoll/ScopedFunction)
 [source, javascript]
 ----
 > (function() {
@@ -145,7 +151,7 @@ Devient :
 < Moi pareil mais avec une syntaxe plus simple ! :)
 ----
 
-a| Template Literals (https://repl.it/@JeffLeFoll/TemplateLiterals)
+a| *Template Literals* (https://repl.it/@JeffLeFoll/TemplateLiterals)
 [source, javascript]
 ----
 > let personne = {prenom:'James', nom:'Bond'};
@@ -162,7 +168,7 @@ a| Template Literals (https://repl.it/@JeffLeFoll/TemplateLiterals)
 ----
 
 
-a| Destructuration (https://repl.it/@JeffLeFoll/Destructuration)
+a| *Destructuration* (https://repl.it/@JeffLeFoll/Destructuration)
 [source, javascript]
 ----
 > let tableauSource = [1, 2, 3, 4];
@@ -188,7 +194,7 @@ a| Destructuration (https://repl.it/@JeffLeFoll/Destructuration)
 > console.log(protocol); // https
 ----
 
-a| Promesses (https://repl.it/@JeffLeFoll/Promesse)
+a| *Promesses* (https://repl.it/@JeffLeFoll/Promesse)
 [source, javascript]
 ----
 > let promesse = new Promise((resolve, reject) => {
@@ -205,7 +211,7 @@ a| Promesses (https://repl.it/@JeffLeFoll/Promesse)
 < Success! bingo
 ----
 
-a| HttpRequest (https://repl.it/@JeffLeFoll/HttpRequest)
+a| *Fetch API* (https://repl.it/@JeffLeFoll/HttpRequest)
 [source, javascript]
 ----
 > fetch('https://swapi.co/api/starships/10/')
@@ -226,7 +232,11 @@ a| HttpRequest (https://repl.it/@JeffLeFoll/HttpRequest)
   cache: 'default',
 };
 > fetch('https://swapi.co/api/starships/10/', options);
+----
 
+a| *HttpRequest* (https://repl.it/@JeffLeFoll/HttpRequest)
+[source, javascript]
+----
 > let xhr = new XMLHttpRequest();
 > xhr.open('get', 'https://swapi.co/api/starships/10/', true);
 > xhr.responseType = 'json';
@@ -242,7 +252,7 @@ a| HttpRequest (https://repl.it/@JeffLeFoll/HttpRequest)
 < xhr: Millennium Falcon
 ----
 
-a| Async / Await (https://repl.it/@JeffLeFoll/AsyncAwait)
+a| *Async / Await* (https://repl.it/@JeffLeFoll/AsyncAwait)
 [source, javascript]
 ----
  > async function loadData(url) {
@@ -256,19 +266,17 @@ a| Async / Await (https://repl.it/@JeffLeFoll/AsyncAwait)
  < Millennium Falcon
 ----
 
-a| JavaScript Module (http://jeff.lefoll.info/es6-cheat-sheet/exemples/imports/index.html)
+a| *JavaScript Module* (http://jeff.lefoll.info/es6-cheat-sheet/exemples/imports/index.html)
 [source, javascript]
 ----
  -- A tester avec Chrome ou Firefox (activer le flag :
  -- dom.moduleScripts.enabled dans la page about:config )
-
  -- Logger.js
  export class Logger {
   static log(logMessage) {
     console.log('From Logger : ' + logMessage);
   }
 }
-
 -- Main.js
 import { Logger } from './Logger.js';
 
@@ -277,24 +285,18 @@ export class Main {
     Logger.log(message);
   }
 }
-
 -- index.html
-<html>
-<body>
-
+<html><body>
     <script type="module">
         import { Main } from './Main.js';
-
         let main = new main('Bingo !!');    
     </script>
-
-</body>
-</html>
+</body></html>
 
 < From Logger : Bingo !!
 ----
 
-a| Prototype (https://repl.it/@JeffLeFoll/Prototype)
+a| *Prototype* (https://repl.it/@JeffLeFoll/Prototype)
 [source, javascript]
 ----
 > function Moto(couleur) {this.couleur = couleur;} 
@@ -315,7 +317,7 @@ a| Prototype (https://repl.it/@JeffLeFoll/Prototype)
 > console.log(motoBleu.carburan); // "essence"
 ----
 
-a| JSON to ES Class (https://repl.it/@JeffLeFoll/JSON2Class)
+a| *JSON to ES Class* (https://repl.it/@JeffLeFoll/JSON2Class)
 [source, javascript]
 ----
 > let jsonData = { nom: 'Bond', prenom: 'James' };
@@ -344,7 +346,7 @@ a| JSON to ES Class (https://repl.it/@JeffLeFoll/JSON2Class)
 < Trevelyan, Alec
 ----
 
-a| Test unitaire (http://jeff.lefoll.info/es6-cheat-sheet/exemples/tests/index.html)
+a| *Test unitaire* (http://jeff.lefoll.info/es6-cheat-sheet/exemples/tests/index.html)
 [source, javascript]
 ----
 -- Agent.js
@@ -378,30 +380,13 @@ describe("Le comportement d'un Agent est", () => {
     monAgent.presentation().should.equal('Bond, James');
   });
 });
-
--- index.html
-<script src ='chai.js'></script>
-<script src ="mocha.js"></script>
-<script>mocha.setup('bdd')</script>
-
-<script src ="Agent.js"></script>
-<script src ="AgentSpec.js"></script>
-
-<script>mocha.run();</script>
 ----
 
-a|Dans le doute : 
+a| *Dans le doute*
 ----
     https://developer.mozilla.org
     https://caniuse.com/
     https://github.com/airbnb/javascript
-
-----
-
-a| es6-cheat-sheet
-----
-Jean-François Le Foll  
-(@JeffLeFoll)
 ----
 
 |===
