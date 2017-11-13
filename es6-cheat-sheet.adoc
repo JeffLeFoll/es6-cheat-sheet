@@ -1,12 +1,14 @@
 = ES6/7-CHEAT-SHEET
 Jean-François Le Foll (@JeffLeFoll)
 :source-highlighter: pygments
-:no-header-footer:
+:nofooter:
+
 :nbColonnes: 3
 
 [.cheat-sheet]
 [grid=none]
 [frame=none]
+[width=90%]
 [cols="{nbColonnes}*.^"]
 |===
 
@@ -132,6 +134,14 @@ a| *Classe - Extension* (https://repl.it/@JeffLeFoll/ES6ClassExt)
 > Moto.warning();
 < "N'oubliez pas les équipements de sécurités"
 ----
+|===
+<<<
+[.cheat-sheet]
+[grid=none]
+[frame=none]
+[width=90%]
+[cols="{nbColonnes}*.^"]
+|===
 
 a| *Scoped Function* (https://repl.it/@JeffLeFoll/ScopedFunction)
 [source, javascript]
@@ -251,6 +261,15 @@ a| *HttpRequest* (https://repl.it/@JeffLeFoll/HttpRequest)
 > xhr.send();
 < xhr: Millennium Falcon
 ----
+
+|===
+<<<
+[.cheat-sheet]
+[grid=none]
+[frame=none]
+[width=90%]
+[cols="{nbColonnes}*.^"]
+|===
 
 a| *Async / Await* (https://repl.it/@JeffLeFoll/AsyncAwait)
 [source, javascript]
