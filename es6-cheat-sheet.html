@@ -669,7 +669,7 @@ code {
 </div>
 </div>
 <div id="content">
-<table class="tableblock frame-none grid-none cheat-sheet" style="width: 90%;">
+<table class="tableblock frame-none grid-none" style="width: 95%;">
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -729,15 +729,15 @@ code {
 <span class="tok-o">&gt;</span> <span class="tok-nx">addition</span><span class="tok-p">(</span><span class="tok-mi">5</span><span class="tok-p">,</span><span class="tok-mi">6</span><span class="tok-p">,</span><span class="tok-mi">7</span><span class="tok-p">);</span>
 <span class="tok-o">&lt;</span> <span class="tok-mi">18</span>
 
-<span class="tok-o">&gt;</span> <span class="tok-kd">let</span> <span class="tok-nx">soustraction</span> <span class="tok-o">=</span> <span class="tok-p">(...[</span><span class="tok-nx">a</span><span class="tok-p">,</span> <span class="tok-nx">b</span><span class="tok-p">,</span> <span class="tok-nx">c</span><span class="tok-p">])</span> <span class="tok-p">=&gt;</span> <span class="tok-nx">a</span> <span class="tok-o">-</span> <span class="tok-nx">b</span> <span class="tok-o">-</span> <span class="tok-nx">c</span><span class="tok-p">;</span>
-<span class="tok-o">&gt;</span> <span class="tok-nx">soustraction</span><span class="tok-p">(</span><span class="tok-mi">20</span><span class="tok-p">,</span> <span class="tok-mi">5</span><span class="tok-p">,</span> <span class="tok-mi">2</span><span class="tok-p">,</span> <span class="tok-mi">45</span><span class="tok-p">);</span>
-<span class="tok-o">&lt;</span> <span class="tok-mi">13</span></code></pre>
+<span class="tok-o">&gt;</span> <span class="tok-kd">let</span> <span class="tok-nx">soustraction</span> <span class="tok-o">=</span> <span class="tok-p">(</span><span class="tok-nx">x</span><span class="tok-p">,</span> <span class="tok-p">...[</span><span class="tok-nx">a</span><span class="tok-p">,</span> <span class="tok-nx">b</span><span class="tok-p">,</span> <span class="tok-nx">c</span><span class="tok-p">])</span> <span class="tok-p">=&gt;</span> <span class="tok-nx">x</span> <span class="tok-o">+</span> <span class="tok-nx">a</span> <span class="tok-o">-</span> <span class="tok-nx">b</span> <span class="tok-o">-</span> <span class="tok-nx">c</span><span class="tok-p">;</span>
+<span class="tok-o">&gt;</span> <span class="tok-nx">soustraction</span><span class="tok-p">(</span><span class="tok-mi">1</span><span class="tok-p">,</span> <span class="tok-mi">20</span><span class="tok-p">,</span> <span class="tok-mi">5</span><span class="tok-p">,</span> <span class="tok-mi">2</span><span class="tok-p">,</span> <span class="tok-mi">45</span><span class="tok-p">);</span>
+<span class="tok-o">&lt;</span> <span class="tok-mi">14</span></code></pre>
 </div>
 </div></div></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-middle"><div><div class="paragraph">
-<p><strong>Manipulation des tableaux</strong> (<a href="https://repl.it/@JeffLeFoll/Array5" class="bare">https://repl.it/@JeffLeFoll/Array5</a>)</p>
+<p><strong>Manipulation des tableaux</strong> (<a href="https://repl.it/@JeffLeFoll/Array" class="bare">https://repl.it/@JeffLeFoll/Array</a>)</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -818,7 +818,7 @@ code {
 </tbody>
 </table>
 <div style="page-break-after: always;"></div>
-<table class="tableblock frame-none grid-none cheat-sheet" style="width: 90%;">
+<table class="tableblock frame-none grid-none" style="width: 95%;">
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -858,6 +858,7 @@ code {
 <span class="tok-sb">            </span><span class="tok-si">${</span><span class="tok-nx">personne</span><span class="tok-p">.</span><span class="tok-nx">prenom</span><span class="tok-si">}</span><span class="tok-sb"></span>
 <span class="tok-sb">      </span><span class="tok-si">${</span><span class="tok-nx">personne</span><span class="tok-p">.</span><span class="tok-nx">nom</span><span class="tok-si">}</span><span class="tok-sb"></span>
 <span class="tok-sb">-- </span><span class="tok-si">${</span><span class="tok-nx">exclam</span><span class="tok-si">}</span><span class="tok-sb"> --`</span><span class="tok-p">);</span>
+
 <span class="tok-o">&lt;</span> <span class="tok-nx">My</span> <span class="tok-nx">name</span> <span class="tok-nx">is</span> <span class="tok-nx">Bond</span><span class="tok-p">,</span>
             <span class="tok-nx">James</span>
       <span class="tok-nx">Bond</span>
@@ -962,7 +963,7 @@ code {
 </tbody>
 </table>
 <div style="page-break-after: always;"></div>
-<table class="tableblock frame-none grid-none cheat-sheet" style="width: 90%;">
+<table class="tableblock frame-none grid-none" style="width: 95%;">
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -1008,12 +1009,10 @@ code {
   <span class="tok-p">}</span>
 <span class="tok-p">}</span>
 <span class="tok-o">--</span> <span class="tok-nx">index</span><span class="tok-p">.</span><span class="tok-nx">html</span>
-<span class="tok-o">&lt;</span><span class="tok-nx">html</span><span class="tok-o">&gt;&lt;</span><span class="tok-nx">body</span><span class="tok-o">&gt;</span>
     <span class="tok-o">&lt;</span><span class="tok-nx">script</span> <span class="tok-nx">type</span><span class="tok-o">=</span><span class="tok-s2">&quot;module&quot;</span><span class="tok-o">&gt;</span>
         <span class="tok-kr">import</span> <span class="tok-p">{</span> <span class="tok-nx">Main</span> <span class="tok-p">}</span> <span class="tok-nx">from</span> <span class="tok-s1">&#39;./Main.js&#39;</span><span class="tok-p">;</span>
         <span class="tok-kd">let</span> <span class="tok-nx">main</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">main</span><span class="tok-p">(</span><span class="tok-s1">&#39;Bingo !!&#39;</span><span class="tok-p">);</span>
     <span class="tok-o">&lt;</span><span class="tok-err">/script&gt;</span>
-<span class="tok-o">&lt;</span><span class="tok-err">/body&gt;&lt;/html&gt;</span>
 
 <span class="tok-o">&lt;</span> <span class="tok-nx">From</span> <span class="tok-nx">Logger</span> <span class="tok-o">:</span> <span class="tok-nx">Bingo</span> <span class="tok-o">!!</span></code></pre>
 </div>
@@ -1038,7 +1037,9 @@ code {
 
 <span class="tok-o">&gt;</span> <span class="tok-nx">motoBleu</span><span class="tok-p">.</span><span class="tok-nx">carburan</span> <span class="tok-o">=</span> <span class="tok-s1">&#39;essence&#39;</span><span class="tok-p">;</span>
 <span class="tok-o">&gt;</span> <span class="tok-nx">console</span><span class="tok-p">.</span><span class="tok-nx">log</span><span class="tok-p">(</span><span class="tok-nx">motoRouge</span><span class="tok-p">.</span><span class="tok-nx">carburan</span><span class="tok-p">);</span> <span class="tok-c1">// &quot;undefined&quot;</span>
-<span class="tok-o">&gt;</span> <span class="tok-nx">console</span><span class="tok-p">.</span><span class="tok-nx">log</span><span class="tok-p">(</span><span class="tok-nx">motoBleu</span><span class="tok-p">.</span><span class="tok-nx">carburan</span><span class="tok-p">);</span> <span class="tok-c1">// &quot;essence&quot;</span></code></pre>
+<span class="tok-o">&gt;</span> <span class="tok-nx">console</span><span class="tok-p">.</span><span class="tok-nx">log</span><span class="tok-p">(</span><span class="tok-nx">motoBleu</span><span class="tok-p">.</span><span class="tok-nx">carburan</span><span class="tok-p">);</span> <span class="tok-c1">// &quot;essence&quot;</span>
+
+<span class="tok-o">&gt;</span> <span class="tok-nx">Moto</span><span class="tok-p">.</span><span class="tok-nx">prototype</span><span class="tok-p">.</span><span class="tok-nx">avancer</span> <span class="tok-o">=</span> <span class="tok-kd">function</span> <span class="tok-p">(</span><span class="tok-nx">distance</span><span class="tok-p">)</span> <span class="tok-p">{}</span></code></pre>
 </div>
 </div></div></td>
 </tr>
@@ -1075,6 +1076,35 @@ code {
 </div>
 </div></div></td>
 <td class="tableblock halign-left valign-middle"><div><div class="paragraph">
+<p><strong>Collections</strong> (<a href="https://repl.it/@JeffLeFoll/Collections" class="bare">https://repl.it/@JeffLeFoll/Collections</a>)</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="javascript"><span></span><span class="tok-o">&gt;</span> <span class="tok-kd">let</span> <span class="tok-nx">tableau</span> <span class="tok-o">=</span> <span class="tok-p">[</span><span class="tok-s1">&#39;foo&#39;</span><span class="tok-p">,</span> <span class="tok-s1">&#39;bar&#39;</span><span class="tok-p">,</span> <span class="tok-s1">&#39;toto&#39;</span><span class="tok-p">];</span>
+<span class="tok-o">&gt;</span> <span class="tok-nx">tableau</span><span class="tok-p">.</span><span class="tok-nx">push</span><span class="tok-p">(</span><span class="tok-s1">&#39;bar&#39;</span><span class="tok-p">);</span>
+<span class="tok-o">&lt;</span> <span class="tok-p">[</span><span class="tok-s1">&#39;foo&#39;</span><span class="tok-p">,</span> <span class="tok-s1">&#39;bar&#39;</span><span class="tok-p">,</span> <span class="tok-s1">&#39;toto&#39;</span><span class="tok-p">,</span> <span class="tok-s1">&#39;bar&#39;</span><span class="tok-p">]</span>
+
+<span class="tok-o">&gt;</span> <span class="tok-kd">let</span> <span class="tok-nx">liste</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">Set</span><span class="tok-p">();</span>
+<span class="tok-o">&gt;</span> <span class="tok-nx">liste</span><span class="tok-p">.</span><span class="tok-nx">add</span><span class="tok-p">(</span><span class="tok-s1">&#39;foo&#39;</span><span class="tok-p">).</span><span class="tok-nx">add</span><span class="tok-p">(</span><span class="tok-s1">&#39;bar&#39;</span><span class="tok-p">).</span><span class="tok-nx">add</span><span class="tok-p">(</span><span class="tok-s1">&#39;toto&#39;</span><span class="tok-p">).</span><span class="tok-nx">add</span><span class="tok-p">(</span><span class="tok-s1">&#39;bar&#39;</span><span class="tok-p">);</span>
+<span class="tok-o">&lt;</span> <span class="tok-nx">Set</span> <span class="tok-p">{</span> <span class="tok-s1">&#39;foo&#39;</span><span class="tok-p">,</span> <span class="tok-s1">&#39;bar&#39;</span><span class="tok-p">,</span> <span class="tok-s1">&#39;toto&#39;</span> <span class="tok-p">}</span>
+
+<span class="tok-o">&gt;</span> <span class="tok-nx">liste</span><span class="tok-p">.</span><span class="tok-nx">has</span><span class="tok-p">(</span><span class="tok-s1">&#39;bar&#39;</span><span class="tok-p">);</span>
+<span class="tok-o">&lt;</span> <span class="tok-kc">true</span>
+
+<span class="tok-o">&gt;</span> <span class="tok-nx">liste</span><span class="tok-p">.</span><span class="tok-nx">forEach</span><span class="tok-p">(</span><span class="tok-nx">value</span> <span class="tok-p">=&gt;</span> <span class="tok-p">{});</span>
+<span class="tok-o">&gt;</span> <span class="tok-p">[...</span><span class="tok-nx">liste</span><span class="tok-p">].</span><span class="tok-nx">filter</span><span class="tok-p">(</span><span class="tok-nx">item</span> <span class="tok-p">=&gt;</span> <span class="tok-p">{});</span>
+
+<span class="tok-o">&gt;</span> <span class="tok-kd">let</span> <span class="tok-nx">map</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">Map</span><span class="tok-p">();</span>
+<span class="tok-o">&gt;</span> <span class="tok-nx">map</span><span class="tok-p">.</span><span class="tok-nx">set</span><span class="tok-p">(</span><span class="tok-mi">1</span><span class="tok-p">,</span> <span class="tok-s1">&#39;Toto&#39;</span><span class="tok-p">);</span>
+<span class="tok-o">&gt;</span> <span class="tok-nx">map</span><span class="tok-p">.</span><span class="tok-nx">set</span><span class="tok-p">(</span><span class="tok-mi">2</span><span class="tok-p">,</span> <span class="tok-s1">&#39;Toto&#39;</span><span class="tok-p">);</span>
+<span class="tok-o">&gt;</span> <span class="tok-nx">map</span><span class="tok-p">.</span><span class="tok-nx">set</span><span class="tok-p">(</span><span class="tok-mi">1</span><span class="tok-p">,</span> <span class="tok-s1">&#39;Foo&#39;</span><span class="tok-p">);</span>
+<span class="tok-o">&lt;</span> <span class="tok-nx">Map</span> <span class="tok-p">{</span> <span class="tok-mi">1</span> <span class="tok-p">=&gt;</span> <span class="tok-s1">&#39;Foo&#39;</span><span class="tok-p">,</span> <span class="tok-mi">2</span> <span class="tok-p">=&gt;</span> <span class="tok-s1">&#39;Toto&#39;</span> <span class="tok-p">}</span>
+
+<span class="tok-o">&gt;</span> <span class="tok-k">for</span> <span class="tok-p">(</span><span class="tok-kd">let</span> <span class="tok-p">[</span><span class="tok-nx">cle</span><span class="tok-p">,</span> <span class="tok-nx">valeur</span><span class="tok-p">]</span> <span class="tok-k">of</span> <span class="tok-nx">map</span><span class="tok-p">.</span><span class="tok-nx">entries</span><span class="tok-p">())</span> <span class="tok-p">{}</span>
+<span class="tok-o">&gt;</span> <span class="tok-nx">map</span><span class="tok-p">.</span><span class="tok-nx">forEach</span><span class="tok-p">((</span><span class="tok-nx">valeur</span><span class="tok-p">,</span> <span class="tok-nx">cle</span><span class="tok-p">)</span> <span class="tok-p">=&gt;</span> <span class="tok-p">{})</span></code></pre>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><div><div class="paragraph">
 <p><strong>Test unitaire</strong> (<a href="http://jeff.lefoll.info/es6-cheat-sheet/exemples/tests/index.html" class="bare">http://jeff.lefoll.info/es6-cheat-sheet/exemples/tests/index.html</a>)</p>
 </div>
 <div class="listingblock">
@@ -1086,30 +1116,56 @@ code {
     <span class="tok-k">this</span><span class="tok-p">.</span><span class="tok-nx">prenom</span> <span class="tok-o">=</span> <span class="tok-nx">prenom</span><span class="tok-p">;</span>
     <span class="tok-k">this</span><span class="tok-p">.</span><span class="tok-nx">_code</span> <span class="tok-o">=</span> <span class="tok-nx">code</span><span class="tok-p">;</span>
   <span class="tok-p">}</span>
-
   <span class="tok-nx">presentation</span><span class="tok-p">()</span> <span class="tok-p">{</span>
     <span class="tok-k">return</span> <span class="tok-k">this</span><span class="tok-p">.</span><span class="tok-nx">nom</span> <span class="tok-o">+</span> <span class="tok-s1">&#39;, &#39;</span> <span class="tok-o">+</span> <span class="tok-k">this</span><span class="tok-p">.</span><span class="tok-nx">prenom</span><span class="tok-p">;</span>
   <span class="tok-p">}</span>
-
-  <span class="tok-nx">get</span> <span class="tok-nx">code</span><span class="tok-p">()</span> <span class="tok-p">{</span>
+  <span class="tok-nx">getCode</span><span class="tok-p">()</span> <span class="tok-p">{</span>
     <span class="tok-k">return</span> <span class="tok-k">this</span><span class="tok-p">.</span><span class="tok-nx">_code</span><span class="tok-p">;</span>
   <span class="tok-p">}</span>
 <span class="tok-p">}</span>
-
 <span class="tok-o">--</span> <span class="tok-nx">AgentSpec</span><span class="tok-p">.</span><span class="tok-nx">js</span>
 <span class="tok-nx">chai</span><span class="tok-p">.</span><span class="tok-nx">should</span><span class="tok-p">();</span> <span class="tok-c1">// ou let expect = chai.expect;</span>
-
 <span class="tok-nx">describe</span><span class="tok-p">(</span><span class="tok-s2">&quot;Le comportement d&#39;un Agent est&quot;</span><span class="tok-p">,</span> <span class="tok-p">()</span> <span class="tok-p">=&gt;</span> <span class="tok-p">{</span>
   <span class="tok-kd">let</span> <span class="tok-nx">monAgent</span><span class="tok-p">;</span>
-
   <span class="tok-nx">beforeEach</span><span class="tok-p">(()</span> <span class="tok-p">=&gt;</span> <span class="tok-p">{</span>
     <span class="tok-nx">monAgent</span> <span class="tok-o">=</span> <span class="tok-k">new</span> <span class="tok-nx">Agent</span><span class="tok-p">(</span><span class="tok-s1">&#39;Bond&#39;</span><span class="tok-p">,</span> <span class="tok-s1">&#39;James&#39;</span><span class="tok-p">,</span> <span class="tok-s1">&#39;007&#39;</span><span class="tok-p">);</span>
   <span class="tok-p">});</span>
-
   <span class="tok-nx">it</span><span class="tok-p">(</span><span class="tok-s1">&#39;doit se presenter&#39;</span><span class="tok-p">,</span> <span class="tok-p">()</span> <span class="tok-p">=&gt;</span> <span class="tok-p">{</span>
     <span class="tok-nx">monAgent</span><span class="tok-p">.</span><span class="tok-nx">presentation</span><span class="tok-p">().</span><span class="tok-nx">should</span><span class="tok-p">.</span><span class="tok-nx">equal</span><span class="tok-p">(</span><span class="tok-s1">&#39;Bond, James&#39;</span><span class="tok-p">);</span>
   <span class="tok-p">});</span>
 <span class="tok-p">});</span></code></pre>
+</div>
+</div></div></td>
+</tr>
+</tbody>
+</table>
+<div style="page-break-after: always;"></div>
+<table class="tableblock frame-none grid-none" style="width: 95%;">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-middle"><div><div class="paragraph">
+<p><strong>Coercition</strong> (<a href="https://repl.it/@JeffLeFoll/Coercition" class="bare">https://repl.it/@JeffLeFoll/Coercition</a>)</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="javascript"><span></span><span class="tok-nx">console</span><span class="tok-p">.</span><span class="tok-nx">log</span><span class="tok-p">(</span><span class="tok-mi">5</span> <span class="tok-o">+</span> <span class="tok-mi">2</span><span class="tok-p">);</span>       <span class="tok-c1">//</span>
+<span class="tok-nx">console</span><span class="tok-p">.</span><span class="tok-nx">log</span><span class="tok-p">(</span><span class="tok-mi">5</span> <span class="tok-o">+</span> <span class="tok-kc">null</span><span class="tok-p">);</span>    <span class="tok-c1">//</span>
+<span class="tok-nx">console</span><span class="tok-p">.</span><span class="tok-nx">log</span><span class="tok-p">(</span><span class="tok-s1">&#39;5&#39;</span> <span class="tok-o">+</span> <span class="tok-mi">2</span><span class="tok-p">);</span>     <span class="tok-c1">//</span>
+<span class="tok-nx">console</span><span class="tok-p">.</span><span class="tok-nx">log</span><span class="tok-p">(</span><span class="tok-s1">&#39;5&#39;</span> <span class="tok-o">+</span> <span class="tok-kc">null</span><span class="tok-p">);</span>  <span class="tok-c1">//</span>
+<span class="tok-nx">console</span><span class="tok-p">.</span><span class="tok-nx">log</span><span class="tok-p">(</span><span class="tok-s1">&#39;5&#39;</span> <span class="tok-o">-</span> <span class="tok-mi">2</span><span class="tok-p">);</span>     <span class="tok-c1">//</span>
+<span class="tok-nx">console</span><span class="tok-p">.</span><span class="tok-nx">log</span><span class="tok-p">(</span><span class="tok-s1">&#39;5&#39;</span> <span class="tok-o">*</span> <span class="tok-s1">&#39;2&#39;</span><span class="tok-p">);</span>   <span class="tok-c1">//</span>
+<span class="tok-nx">console</span><span class="tok-p">.</span><span class="tok-nx">log</span><span class="tok-p">(</span><span class="tok-s1">&#39;55&#39;</span> <span class="tok-o">==</span> <span class="tok-mi">55</span><span class="tok-p">);</span>  <span class="tok-c1">//</span>
+<span class="tok-nx">console</span><span class="tok-p">.</span><span class="tok-nx">log</span><span class="tok-p">(</span><span class="tok-s1">&#39;55&#39;</span> <span class="tok-o">===</span> <span class="tok-mi">55</span><span class="tok-p">);</span> <span class="tok-c1">//</span></code></pre>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><div><div class="listingblock">
+<div class="content">
+<pre></pre>
 </div>
 </div></div></td>
 <td class="tableblock halign-left valign-middle"><div><div class="paragraph">

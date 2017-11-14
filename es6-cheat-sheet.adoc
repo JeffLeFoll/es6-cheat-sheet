@@ -5,10 +5,9 @@ Jean-François Le Foll (@JeffLeFoll)
 
 :nbColonnes: 3
 
-[.cheat-sheet]
 [grid=none]
 [frame=none]
-[width=90%]
+[width=95%]
 [cols="{nbColonnes}*.^"]
 |===
 
@@ -136,12 +135,12 @@ a| *Classe - Extension* (https://repl.it/@JeffLeFoll/ES6ClassExt)
 ----
 |===
 <<<
-[.cheat-sheet]
 [grid=none]
 [frame=none]
-[width=90%]
+[width=95%]
 [cols="{nbColonnes}*.^"]
 |===
+
 
 a| *Scoped Function* (https://repl.it/@JeffLeFoll/ScopedFunction)
 [source, javascript]
@@ -171,6 +170,7 @@ a| *Template Literals* (https://repl.it/@JeffLeFoll/TemplateLiterals)
             ${personne.prenom} 
       ${personne.nom}
 -- ${exclam} --`);
+
 < My name is Bond, 
             James 
       Bond
@@ -264,12 +264,12 @@ a| *HttpRequest* (https://repl.it/@JeffLeFoll/HttpRequest)
 
 |===
 <<<
-[.cheat-sheet]
 [grid=none]
 [frame=none]
-[width=90%]
+[width=95%]
 [cols="{nbColonnes}*.^"]
 |===
+
 
 a| *Async / Await* (https://repl.it/@JeffLeFoll/AsyncAwait)
 [source, javascript]
@@ -332,6 +332,8 @@ a| *Prototype* (https://repl.it/@JeffLeFoll/Prototype)
 > motoBleu.carburan = 'essence';
 > console.log(motoRouge.carburan); // "undefined"
 > console.log(motoBleu.carburan); // "essence"
+
+> Moto.prototype.avancer = function (distance) {}
 ----
 
 a| *JSON to ES Class* (https://repl.it/@JeffLeFoll/JSON2Class)
@@ -373,6 +375,10 @@ a| *Collections* (https://repl.it/@JeffLeFoll/Collections)
 > let liste = new Set();
 > liste.add('foo').add('bar').add('toto').add('bar'); 
 < Set { 'foo', 'bar', 'toto' }
+
+> liste.has('bar');
+< true
+
 > liste.forEach(value => {});
 > [...liste].filter(item => {});
 
@@ -381,6 +387,7 @@ a| *Collections* (https://repl.it/@JeffLeFoll/Collections)
 > map.set(2, 'Toto');
 > map.set(1, 'Foo');
 < Map { 1 => 'Foo', 2 => 'Toto' }
+
 > for (let [cle, valeur] of map.entries()) {}
 > map.forEach((valeur, cle) => {})
 ----
@@ -395,30 +402,50 @@ class Agent {
     this.prenom = prenom;
     this._code = code;
   }
-
-  presentation() {
-    return this.nom + ', ' + this.prenom;
+  presentation() { 
+    return this.nom + ', ' + this.prenom; 
   }
-
-  get code() {
-    return this._code;
+  getCode() { 
+    return this._code; 
   }
 }
-
 -- AgentSpec.js
 chai.should(); // ou let expect = chai.expect;
-
 describe("Le comportement d'un Agent est", () => {
   let monAgent;
-
   beforeEach(() => {
     monAgent = new Agent('Bond', 'James', '007');
   });
-
   it('doit se presenter', () => {
     monAgent.presentation().should.equal('Bond, James');
   });
 });
+----
+
+|===
+<<<
+[grid=none]
+[frame=none]
+[width=95%]
+[cols="{nbColonnes}*.^"]
+|===
+
+
+a| *Coercition* (https://repl.it/@JeffLeFoll/Coercition)
+[source, javascript]
+----
+console.log(5 + 2);       // 
+console.log(5 + null);    //
+console.log('5' + 2);     //
+console.log('5' + null);  //
+console.log('5' - 2);     //
+console.log('5' * '2');   //
+console.log('55' == 55);  //
+console.log('55' === 55); //
+----
+
+a|
+----
 ----
 
 a| *Dans le doute*

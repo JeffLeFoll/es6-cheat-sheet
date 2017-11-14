@@ -15,5 +15,5 @@ Plus d'informations sur le site de l'outil de génération [AsciiDoctor](http://
 
 Pour générer correctement le document il faudra également installer [Pygments](http://asciidoctor.org/docs/user-manual/#pygments), utilisé pour la coloration syntaxique du code.
 
-Il est recommendé de desactiver les css pour la génération du html : 
-`asciidoctor -a stylesheet! es6-cheat-sheet.adoc`.
+Pour générer la version html :  
+`asciidoctor -a stylesheet=cheat-sheet.css es6-cheat-sheet.adoc`.
