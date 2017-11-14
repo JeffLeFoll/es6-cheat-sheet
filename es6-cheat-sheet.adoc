@@ -3,7 +3,7 @@ Jean-François Le Foll (@JeffLeFoll)
 :source-highlighter: pygments
 :nofooter:
 
-:nbColonnes: 3
+:nbColonnes: 1
 
 [grid=none]
 [frame=none]
