@@ -58,12 +58,12 @@ a| *Gestion des paramètres* (https://repl.it/@JeffLeFoll/Parametres)
 > addition(5,6,7);
 < 18
 
-> let soustraction = (...[a, b, c]) => a - b - c;
-> soustraction(20, 5, 2, 45);
-< 13
+> let soustraction = (x, ...[a, b, c]) => x + a - b - c;
+> soustraction(1, 20, 5, 2, 45);
+< 14
 ----
 
-a| *Manipulation des tableaux* (https://repl.it/@JeffLeFoll/Array5)
+a| *Manipulation des tableaux* (https://repl.it/@JeffLeFoll/Array)
 [source, javascript]
 ----
 > ['foo', 'bar', 'flop'].filter(item => item.startsWith('f')); 
@@ -305,12 +305,10 @@ export class Main {
   }
 }
 -- index.html
-<html><body>
     <script type="module">
         import { Main } from './Main.js';
         let main = new main('Bingo !!');    
     </script>
-</body></html>
 
 < From Logger : Bingo !!
 ----
@@ -363,6 +361,28 @@ a| *JSON to ES Class* (https://repl.it/@JeffLeFoll/JSON2Class)
 > let agent006 = new Personne(autreJsonData);
 > console.log(agent006.presentation());
 < Trevelyan, Alec
+----
+
+a| *Collections* (https://repl.it/@JeffLeFoll/Collections)
+[source, javascript]
+----
+> let tableau = ['foo', 'bar', 'toto'];
+> tableau.push('bar'); 
+< ['foo', 'bar', 'toto', 'bar']
+
+> let liste = new Set();
+> liste.add('foo').add('bar').add('toto').add('bar'); 
+< Set { 'foo', 'bar', 'toto' }
+> liste.forEach(value => {});
+> [...liste].filter(item => {});
+
+> let map = new Map();
+> map.set(1, 'Toto');
+> map.set(2, 'Toto');
+> map.set(1, 'Foo');
+< Map { 1 => 'Foo', 2 => 'Toto' }
+> for (let [cle, valeur] of map.entries()) {}
+> map.forEach((valeur, cle) => {})
 ----
 
 a| *Test unitaire* (http://jeff.lefoll.info/es6-cheat-sheet/exemples/tests/index.html)
